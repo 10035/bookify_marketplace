@@ -1,23 +1,11 @@
 class OrdersController < ApplicationController
-  def index
-    @orders = Order.all
-  end
-
-  def show
-    @order = Order.find(params[:id])
-  end
-
-  def new
-    @order = Order.new
-  end
-
   def create
     @order = Order.new(order_params)
     @book = Book.find(params[:book_id])
     @order.user = current_user
 
     if @order.save
-      redirect_to book_path(@book)
+      redirect_to book_path(@order.book)
     else
       render :new
     end
