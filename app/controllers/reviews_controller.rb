@@ -1,19 +1,19 @@
 class ReviewsController < ApplicationController
 
   def new
-    @book = Book.find(params[:book_id])
+    @order = Order.find(params[:order_id])
     @reviews = Review.all
   end
 
   def create
     @review = Review.find(params)
-    @book = Book.find(params[:book_id])
+    @order = Order.find(params[:order_id])
 
-    @review.book = @book
+    @review.order = @order
     @review.save
 
     if @review.save
-      redirect_to book_path(@book)
+      redirect_to order_path(@order)
     else
       render :new
     end
