@@ -1,4 +1,9 @@
 Rails.application.configure do
+
+
+  # Devise configuration for login/logout
+  config.action_mailer.default_url_options = { host: 'localhost', port: 5000 }      
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
