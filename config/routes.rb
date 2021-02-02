@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   get 'books/index'
   get 'books/show'
   get 'books/create'
-  resources :books
+  resources :books do
+    resources :orders, only: [:create]
+  end
 end
