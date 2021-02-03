@@ -15,7 +15,6 @@ class BooksController < ApplicationController
 
   def author
     @book = Book.find(params[:id])
-    @author.book_id = @book
-    raise
+    @author =  @book.author[:first_name] +" "+ @book.author[:last_name]
   end
 end
