@@ -1,2 +1,7 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<% @books.each do |book| %>
+  <h1><%= book.title %></h1>
+  <p><%= book.published_year %></p>
+  <p><%= book.genre %></p>
+  <p><%= book.price %></p>
+  <p><%= book.description %></p>
+<% end %>

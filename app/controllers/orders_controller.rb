@@ -4,6 +4,10 @@ class OrdersController < ApplicationController
     @review = @order.review_id
   end
 
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def new
     @order = Order.new
   end
