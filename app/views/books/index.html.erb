@@ -1,7 +1,11 @@
+
+
+
+<p><%= link_to "Add book", new_book_path %></p>
+
 <% @books.each do |book| %>
   <h1><%= book.title %></h1>
-  <p><%= book.published_year %></p>
-  <p><%= book.genre %></p>
-  <p><%= book.price %></p>
-  <p><%= book.description %></p>
+
+
+  <%= link_to "Learn more", book_path(book) %>
 <% end %>
