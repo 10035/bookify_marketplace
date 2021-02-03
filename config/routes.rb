@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :books do
+    member do
+      get :author
+    end
     resources :orders, only: [:create] do
       resources :reviews, only: [:new, :create]
     end

@@ -6,11 +6,16 @@ class BooksController < ApplicationController
   end
 
   def new
-    
-  end
 
+  end
 
   def create
     # Book.new()
+  end
+
+  def author
+    @book = Book.find(params[:id])
+    @author.book_id = @book
+    raise
   end
 end
