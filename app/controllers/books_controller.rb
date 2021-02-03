@@ -15,6 +15,11 @@ class BooksController < ApplicationController
 
   def author
     @book = Book.find(params[:id])
-    @author =  @book.author[:first_name] +" "+ @book.author[:last_name]
+    @author_name =  @book.author[:first_name] +" "+ @book.author[:last_name]
+  end
+
+  def order
+    @book = Book.find(params[:id])
+    @order = Order.find {|order| order.book_id == @book.id}
   end
 end

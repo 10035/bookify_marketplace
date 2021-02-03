@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   resources :books do
     member do
       get :author
-    end
-    resources :orders, only: [:create] do
-      resources :reviews, only: [:new, :create]
+      get :order
     end
   end
 
+#need help routing the reviews correctly
+  resources :orders do
+    resources :review, only: [:new, :create]
+  end
   resources :reviews, only: [:destroy]
 end
