@@ -2,13 +2,14 @@ class ReviewsController < ApplicationController
 
   def new
     @order = Order.find(params[:order_id])
-    @reviews = Review.new
+    @review = Review.new
   end
 
   def create
-    @review = Review.new
+    @review = Review.new(review_params)
     @order = Order.find(params[:order_id])
     @review.order = @order
+    @review.user = current_user
 
     if @review.save
       redirect_to order_path(@order)

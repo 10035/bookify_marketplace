@@ -33,6 +33,7 @@ class BooksController < ApplicationController
   def order
     @book = Book.find(params[:id])
     @order = Order.find {|order| order.book_id == @book.id}
+    @review = Review.find {|review| review.order_id == @order.id}
   end
 
   def book_params

@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
 #need help routing the reviews correctly
   resources :orders do
-    resources :review, only: [:new, :create]
+    resources :reviews, only: [:new, :create]
   end
+
   resources :reviews, only: [:destroy]
 end

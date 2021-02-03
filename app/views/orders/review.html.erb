@@ -1,1 +1,4 @@
-<h1><%= @review %> </h1>
+<%= simple_form_for [@order, @review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+<% end %>
