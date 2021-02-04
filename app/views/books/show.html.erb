@@ -9,14 +9,12 @@
 
 
 <h2>Rent book</h2>
-
 <%= simple_form_for [@book, @order] do |f| %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.submit "confirm" %>
 <% end %>
 
-<!-- Show the order status -->
-<!--  <h2>Order Status: <%#= @order[0][:status] %></h2> -->
-
+<h3><%= link_to "See orders", book_orders_path(@book) %>
+</h3>
 
