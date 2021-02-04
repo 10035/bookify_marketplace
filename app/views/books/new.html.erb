@@ -1,1 +1,11 @@
-<p>test</p>
+<%= simple_form_for @book do |f| %>
+  <%= f.input :title %>
+  <%= f.input :author_id, collection: Author.all.map { |author| ["#{author.first_name} #{author.last_name} ", author.id ] }%>
+  <%= f.input :published_year %>
+  <%= f.input :genre %>
+  <%= f.input :price %>
+  <%= f.input :description %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= link_to "All Books", books_path %>

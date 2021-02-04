@@ -1,2 +1,14 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h1><%= @book.title %></h1>
+<p><%= @book.published_year %></p>
+  <p><%= @book.genre %></p>
+  <p><%= @book.price %></p>
+  <p><%= @book.description %></p>
+  <p><%= @book.author.first_name %> <%= @book.author.last_name %></p>
+  <p><%= link_to "Author info", author_book_path %></p>
+<%= link_to "Go to Books", books_path %>
+
+
+<!-- Show the order status -->
+<!--  <h2>Order Status: <%#= @order[0][:status] %></h2> -->
+
+
