@@ -3,14 +3,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :books do
+    resources :orders, only: [:index, :create]
     member do
       get :author
-      get :order
     end
   end
 
-#need help routing the reviews correctly
-  resources :orders do
+  resources :orders, only: [:destroy] do
     resources :reviews, only: [:new, :create]
   end
 

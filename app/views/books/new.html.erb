@@ -1,6 +1,6 @@
 <%= simple_form_for @book do |f| %>
   <%= f.input :title %>
-  <%= f.association :author%>
+  <%= f.input :author_id, collection: Author.all.map { |author| ["#{author.first_name} #{author.last_name} ", author.id ] }%>
   <%= f.input :published_year %>
   <%= f.input :genre %>
   <%= f.input :price %>

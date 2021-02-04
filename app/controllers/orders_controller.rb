@@ -4,6 +4,11 @@ class OrdersController < ApplicationController
     @review = @order.review_id
   end
 
+  def index
+    @book = Book.find(params[:book_id])
+    @orders = @book.orders
+  end
+
   def show
     @order = Order.find(params[:id])
   end
@@ -22,6 +27,14 @@ class OrdersController < ApplicationController
     else
       render :new
     end
+
+  end
+
+  def edit
+
+  end
+
+  def update
 
   end
 
