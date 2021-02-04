@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @book = Book.find(params[:book_id])
+    @order.book = @book
     @order.user = current_user
 
     if @order.save
@@ -41,6 +42,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:order_date, :order_total, :quantity, :status)
+    params.require(:order).permit(:start_date, :end_date, :order_total, :quantity, :status)
   end
 end
