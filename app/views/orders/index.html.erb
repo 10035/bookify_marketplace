@@ -1,4 +1,6 @@
-<h1>Orders</h1>
+<p><%= link_to "All books", books_path %></p>
+
+<h1>All Orders</h1>
 
 <% @orders.each do |order| %>
   <h2><%= order.start_date %></h2>
@@ -10,4 +12,4 @@
 <% end %>
 
 
-<%= link_to "Back", book_path(@book) %>
+

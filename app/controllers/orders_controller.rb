@@ -5,8 +5,9 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @book = Book.find(params[:book_id])
-    @orders = @book.orders
+    # @book = Book.find(params[:book_id])
+    # @order = @book.orders
+    @orders = Order.all
   end
 
   def show
@@ -25,7 +26,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       # redirect_to book_path(@book)
-      redirect_to  book_orders_path(@book)
+      redirect_to  book_path(@book)
     else
       render :new
     end
