@@ -7,7 +7,15 @@
   <p><%= link_to "Author info", author_book_path %></p>
 
 
-<!-- Show the order status -->
-<!--  <h2>Order Status: <%#= @order[0][:status] %></h2> -->
+<h2>Rent book</h2>
+<%= simple_form_for [@book, @order] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit "confirm" %>
+<% end %>
 
 
+<h2>Order History for "<%= @book.title %>"</h2>
+<% @orders.each do |order| %>
+  <p> <%= order.start_date %> </p>
+<% end %>
