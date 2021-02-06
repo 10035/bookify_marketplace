@@ -1,5 +1,7 @@
 <p><%= link_to "All books", books_path %></p>
 
+
+<div class="container">
 <h1>All Orders</h1>
 
 <% @orders.each do |order| %>
@@ -12,3 +14,4 @@
   <h2><%= order.status %></h2>
   <hr>
 <% end %>
+</div>
