@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
+
+
   def index
     @books = Book.all
+    # @books = policy_scope(Book).orders(created_at: :desc)
   end
 
   def show
@@ -10,13 +14,14 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    authorize @book
   end
 
   def create
     @book = Book.new(book_params)
+    authorize @book
     @author = Author.find(params[:book][:author_id])
     @book.author = @author
-
     if @book.save
       redirect_to books_path
 
