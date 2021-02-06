@@ -8,8 +8,6 @@ class BooksController < ApplicationController
     @orders = @book.orders
 
     @order = Order.new
-
-
   end
 
   def new
