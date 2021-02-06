@@ -13,7 +13,7 @@
   </head>
 
   <body>
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon px-2">
   <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "booklogo.svg" %>
     <%# https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png %>
@@ -30,7 +30,7 @@
 
       <% if user_signed_in? %>
         <li class="nav-item active ">
-          <%= link_to "Home", "#", class: "nav-link" %>
+          <%= link_to "Browse Selection", "books", class: "nav-link" %>
         </li>
 
         <li class="nav-item dropdown">
@@ -50,18 +50,27 @@
 </div>
 
   <%# TODO: CHECK WHAT THIS IS FOR. REFER TO LECTURE %>
+<<<<<<< HEAD
 <!-- <<<<<<< HEAD -->
 
+=======
+    
+>>>>>>> b9e93c5712f192515d6a7202114138ef31c9ccc3
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+<<<<<<< HEAD
 
 <%# <%= link_to "Log out", destroy_user_session_path, method: :delete%>
 
 <!-- ======= -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+=======
+<%# <%= link_to "Log out", destroy_user_session_path, method: :delete%> 
+       
+>>>>>>> b9e93c5712f192515d6a7202114138ef31c9ccc3
 
   </body>
 </html>
