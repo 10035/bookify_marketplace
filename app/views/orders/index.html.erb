@@ -1,2 +1,19 @@
+<p><%= link_to "All books", books_path %></p>
 
+<h1>All Orders</h1>
+
+<% @orders.each do |order| %>
+  <h2><%= order.start_date %></h2>
+  <h2><%= order.end_date %></h2>
+  <h2><%= order.order_total %></h2>
+  <h2><%= order.quantity %></h2>
+  <h2><%= order.status %></h2>
+  <hr>
+<% end %>
+
+<<<<<<< HEAD
 <h1>orders</h1>
+=======
+
+
+>>>>>>> 692cc08b24e7ac106a3787d48ca945bbec741197

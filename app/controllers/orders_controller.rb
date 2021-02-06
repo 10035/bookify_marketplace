@@ -5,8 +5,9 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @book = Book.find(params[:book_id])
-    @orders = @book.orders
+    # @book = Book.find(params[:book_id])
+    # @order = @book.orders
+    @orders = Order.all
   end
 
   def show
@@ -20,10 +21,12 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @book = Book.find(params[:book_id])
+    @order.book = @book
     @order.user = current_user
 
     if @order.save
-      redirect_to book_path(@order.book)
+      # redirect_to book_path(@book)
+      redirect_to  book_path(@book)
     else
       render :new
     end
@@ -41,6 +44,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:order_date, :order_total, :quantity, :status)
+    params.require(:order).permit(:start_date, :end_date, :order_total, :quantity, :status)
   end
 end

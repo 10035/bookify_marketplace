@@ -9,6 +9,18 @@
 <%= link_to "Go to Books", books_path %>
 
 
-<!-- Show the order status -->
-<!--  <h2>Order Status: <%#= @order[0][:status] %></h2> -->
+<h2>Rent book</h2>
+<%= simple_form_for [@book, @order] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit "confirm" %>
+<% end %>
 
+<<<<<<< HEAD
+=======
+
+<h2>Order History for "<%= @book.title %>"</h2>
+<% @orders.each do |order| %>
+  <p> <%= order.start_date %> </p>
+<% end %>
+>>>>>>> 692cc08b24e7ac106a3787d48ca945bbec741197
