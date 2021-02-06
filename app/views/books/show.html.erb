@@ -1,21 +1,34 @@
 <h1><%= @book.title %></h1>
+<%= image_tag(@book.img_url)  %>
 <p><%= @book.published_year %></p>
   <p><%= @book.genre %></p>
   <p><%= @book.price %></p>
   <p><%= @book.description %></p>
   <p><%= @book.author.first_name %> <%= @book.author.last_name %></p>
   <p><%= link_to "Author info", author_book_path %></p>
+<<<<<<< HEAD
+<%= link_to "Back", books_path %>
+=======
+>>>>>>> b9e93c5712f192515d6a7202114138ef31c9ccc3
 
+<hr>
 
 <h2>Rent book</h2>
 <%= simple_form_for [@book, @order] do |f| %>
+  <label>Check out</label>
   <%= f.input :start_date %>
+  <label>Return</label>
   <%= f.input :end_date %>
-  <%= f.submit "confirm" %>
+  <%= f.submit "Rent" %>
 <% end %>
 
 
-<h2>Order History for "<%= @book.title %>"</h2>
+
+<h2>Your Order History for <%= @book.title  %></h2>
+
 <% @orders.each do |order| %>
-  <p> <%= order.start_date %> </p>
+  <p><%= order.start_date%> <%= order.end_date%></p>
 <% end %>
+
+
+

@@ -9,9 +9,17 @@
     <h1><%= book.title %></h1>
     <p><%= book.description %><p>
 
+<<<<<<< HEAD
+<% @books.each do |book| %>
+  <h1><%= book.title %></h1>
+  <%= image_tag(book.img_url)  %>
+  <p><%= link_to "Book info", book_path(book) %></p>
+<% end %>
+=======
     <%= link_to "Learn more", book_path(book) %>
   <% end %>
 </div>
 </div>
 
+>>>>>>> b9e93c5712f192515d6a7202114138ef31c9ccc3
 

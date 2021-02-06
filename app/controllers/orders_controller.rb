@@ -7,7 +7,9 @@ class OrdersController < ApplicationController
   def index
     # @book = Book.find(params[:book_id])
     # @order = @book.orders
+
     @orders = Order.all
+
   end
 
   def show

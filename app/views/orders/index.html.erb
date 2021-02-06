@@ -3,6 +3,8 @@
 <h1>All Orders</h1>
 
 <% @orders.each do |order| %>
+  <%  @book = Book.find {|book| book.id == order.book_id} %>
+  <h2><%= @book.title %></h2>
   <h2><%= order.start_date %></h2>
   <h2><%= order.end_date %></h2>
   <h2><%= order.order_total %></h2>
@@ -10,6 +12,3 @@
   <h2><%= order.status %></h2>
   <hr>
 <% end %>
-
-
-<p>orders</p>
