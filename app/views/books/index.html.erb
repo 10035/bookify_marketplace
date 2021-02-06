@@ -5,8 +5,7 @@
 
 <% @books.each do |book| %>
   <h1><%= book.title %></h1>
-
-
-  <%= link_to "Learn more", book_path(book) %>
+  <%= image_tag(book.img_url)  %>
+  <p><%= link_to "Book info", book_path(book) %></p>
 <% end %>
 

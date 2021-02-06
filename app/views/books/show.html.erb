@@ -6,21 +6,26 @@
   <p><%= @book.description %></p>
   <p><%= @book.author.first_name %> <%= @book.author.last_name %></p>
   <p><%= link_to "Author info", author_book_path %></p>
-<%= link_to "Go to Books", books_path %>
+<%= link_to "Back", books_path %>
 
+<hr>
 
 <h2>Rent book</h2>
 <%= simple_form_for [@book, @order] do |f| %>
+  <label>Check out</label>
   <%= f.input :start_date %>
+  <label>Return</label>
   <%= f.input :end_date %>
-  <%= f.submit "confirm" %>
+  <%= f.submit "Rent" %>
 <% end %>
 
-<<<<<<< HEAD
-=======
 
-<h2>Order History for "<%= @book.title %>"</h2>
+
+<h2>Your Order History for <%= @book.title  %></h2>
+
 <% @orders.each do |order| %>
-  <p> <%= order.start_date %> </p>
+  <p><%= order.start_date%> <%= order.end_date%></p>
 <% end %>
->>>>>>> 692cc08b24e7ac106a3787d48ca945bbec741197
+
+
+

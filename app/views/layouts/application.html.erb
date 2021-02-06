@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete%>
     <title>BookifyMarketplace</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -27,9 +28,6 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-
-
-
       <% if user_signed_in? %>
         <li class="nav-item active ">
           <%= link_to "Home", "#", class: "nav-link" %>
@@ -52,24 +50,18 @@
 </div>
 
   <%# TODO: CHECK WHAT THIS IS FOR. REFER TO LECTURE %>
-<<<<<<< HEAD
-    
-    <%= yield %>
-    <p class="notice"><%= notice %></p>  
-    <p class="alert"><%= alert %></p>
-      
+<!-- <<<<<<< HEAD -->
 
-<%# <%= link_to "Log out", destroy_user_session_path, method: :delete%> 
-       
-=======
+    <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= link_to "Log out", destroy_user_session_path, method: :delete%>
 
-    <div class="container">
-      <%= yield %>
-    </div>
->>>>>>> 692cc08b24e7ac106a3787d48ca945bbec741197
+
+<%# <%= link_to "Log out", destroy_user_session_path, method: :delete%>
+
+<!-- ======= -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
   </body>
 </html>
