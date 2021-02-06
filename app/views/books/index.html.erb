@@ -1,14 +1,17 @@
-<p><%= link_to "Add book", new_book_path %></p>
 
-<p><%= link_to "All orders", orders_path %></p>
+<li class="nav-item active ">
+<%= link_to "Add book", new_book_path, class: "nav-link"  %>
+</li>
 
+<div class="cards">
+<div class="card-category">
+  <% @books.each do |book| %>
+    <h1><%= book.title %></h1>
+    <p><%= book.description %><p>
 
-<% @books.each do |book| %>
-  <h1><%= book.title %></h1>
+    <%= link_to "Learn more", book_path(book) %>
+  <% end %>
+</div>
+</div>
 
-
-  <%= link_to "Learn more", book_path(book), target: :_blank %>
-  <br>
-
-<% end %>
 
