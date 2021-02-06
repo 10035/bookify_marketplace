@@ -3,11 +3,38 @@ class BookPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
-    def new?
-      true
-    end
 
+  def index?
+    true
+  end
+
+  def show?
+    true
+  end
+
+  def create?
+    true
+  end
+
+  def new?
+    create?
+  end
+
+  def update?
+    true
+  end
+
+  def edit?
+    update?
+  end
+
+  def destroy?
+    true
+  end
+  
+  
     # def create?
     #   true
     # end
@@ -17,5 +44,5 @@ class BookPolicy < ApplicationPolicy
     # end
 
 
-  end
+ 
 end
