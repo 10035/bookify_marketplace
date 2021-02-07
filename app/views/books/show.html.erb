@@ -17,7 +17,7 @@
 
 <h2>Rent book</h2>
 
-<div id='book-order-dates' data-unavailable="<%= @book.unavailable_dates.to_json %>">
+<div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;" id='book-order-dates' data-unavailable="<%= @book.unavailable_dates.to_json %>">
     <%# if current_user.id != @book.user_id  %>
        <%= simple_form_for([@book, @order]) do |f| %>
            <%= f.input :start_date, as: :string, type: :text, input_html: { id: 'order_start_date'}  %>
