@@ -2,7 +2,7 @@
 <div class="container">
 
 <h1><%= @book.title %></h1>
-<%= image_tag(@book.img_url)  %>
+<%#= image_tag(@book.img_url)  %>
 <p><%= @book.published_year %></p>
   <p><%= @book.genre %></p>
   <p><%= @book.price %></p>
@@ -18,13 +18,13 @@
 <h2>Rent book</h2>
 
 <div id='book-order-dates' data-unavailable="<%= @book.unavailable_dates.to_json %>">
-    <% if current_user.id != @book.user_id  %>
+    <%# if current_user.id != @book.user_id  %>
        <%= simple_form_for([@book, @order]) do |f| %>
-           <%= f.input :start_date, as: :string, type: :text %>
-           <%= f.input :end_date, as: :string, type: :text %>
+           <%= f.input :start_date, as: :string, type: :text, input_html: { id: 'order_start_date'}  %>
+           <%= f.input :end_date, as: :string, type: :text,  input_html: { id: 'order_end_date'}  %>
            <%= f.submit "Rent", class: "btn btn-primary" %>
         <% end %>
-    <% end %>
+    <%# end %>
  </div>
 
 

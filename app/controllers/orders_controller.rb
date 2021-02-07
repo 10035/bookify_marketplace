@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
     @order.user = current_user
 
     if @order.save
-      # redirect_to book_path(@book)
       redirect_to  book_path(@book)
     else
       render :new
