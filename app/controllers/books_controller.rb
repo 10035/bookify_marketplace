@@ -26,7 +26,6 @@ class BooksController < ApplicationController
     @book.author = @author
     if @book.save
       redirect_to books_path
-
     else
       render :new
     end
@@ -34,6 +33,7 @@ class BooksController < ApplicationController
 
   def author
     @book = Book.find(params[:id])
+    @author = @book.author
     @author_name =  @book.author[:first_name] +" "+ @book.author[:last_name]
   end
 
@@ -42,6 +42,8 @@ class BooksController < ApplicationController
     @order = Order.find {|order| order.book_id == @book.id}
     @review = Review.find {|review| review.order_id == @order.id}
   end
+
+  private
 
   def book_params
     params.require(:book).permit(:title, :published_year, :genre, :price, :description)

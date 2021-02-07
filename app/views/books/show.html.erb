@@ -2,7 +2,7 @@
 <div class="container">
 
 <h1><%= @book.title %></h1>
-<%= image_tag(@book.img_url)  %>
+<%#= image_tag(@book.img_url)  %>
 <p><%= @book.published_year %></p>
   <p><%= @book.genre %></p>
   <p><%= @book.price %></p>
@@ -10,7 +10,8 @@
   <p><%= @book.author.first_name %> <%= @book.author.last_name %></p>
   <p><%= link_to "Author info", author_book_path %></p>
 
-<%= link_to "Back", books_path %>
+
+<%= link_to "Back to all books", books_path %>
 
 
 <hr>
