@@ -7,7 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-
+require("flatpickr")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -25,7 +25,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
-// import flatpickr from "flatpickr";
+import flatpickr from "flatpickr";
 // import "init_flatpickr";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -34,3 +34,8 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
+
+// flatpickr calendar event listener for book/order show page
+document.addEventListener('DOMContentLoaded', function() {
+  flatpickr('#book-order-dates');
+})
