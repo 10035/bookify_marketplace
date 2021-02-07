@@ -34,6 +34,7 @@ class BooksController < ApplicationController
 
   def author
     @book = Book.find(params[:id])
+    @author = @book.author
     @author_name =  @book.author[:first_name] +" "+ @book.author[:last_name]
   end
 
