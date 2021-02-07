@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-   
     <title>BookifyMarketplace</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon px-2">
-  <%= link_to "/", class: "navbar-brand" do %>
+    <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "booklogo.svg" %>
     <%# https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png %>
     <% end %>
 
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+    </button>
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,7 +27,7 @@
 
       <% if user_signed_in? %>
         <li class="nav-item active ">
-          <%= link_to "Browse Selection", "books", class: "nav-link" %>
+          <%= link_to "BROWSE BOOKS", "/books", id:"custom-link", class: "nav-link" %>
         </li>
 
         <li class="nav-item dropdown">
@@ -57,3 +54,20 @@
 
   </body>
 </html>
+
+
+<div class="container">
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  </div>
+</div>
+</div>
+
+
