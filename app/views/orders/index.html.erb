@@ -12,6 +12,8 @@
   <h2><%= order.order_total %></h2>
   <h2><%= order.quantity %></h2>
   <h2><%= order.status %></h2>
+  <h2><%= link_to "Cancel order", order_path(order), method: :delete,
+            data: { confirm: "Are you sure?" } %></h2>
   <hr>
 <% end %>
 </div>

@@ -43,6 +43,8 @@ class BooksController < ApplicationController
     @review = Review.find {|review| review.order_id == @order.id}
   end
 
+  private
+
   def book_params
     params.require(:book).permit(:title, :published_year, :genre, :price, :description)
   end
