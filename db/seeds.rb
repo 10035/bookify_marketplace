@@ -27,7 +27,7 @@ puts "Seeding starting..."
 
   book = Book.new(
     title: Faker::Book.title,
-    published_year: [1920...2020].sample,
+    published_year: rand(1900..2020),
     genre: Faker::Book.genre,
     price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
     description: Faker::Lorem.paragraphs,

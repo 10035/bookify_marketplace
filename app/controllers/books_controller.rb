@@ -25,7 +25,7 @@ class BooksController < ApplicationController
     @author = Author.find(params[:book][:author_id])
     @book.author = @author
     if @book.save
-      redirect_to books_path
+      redirect_to book_path(@book)
 
     else
       render :new
@@ -44,6 +44,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :published_year, :genre, :price, :description, :photos)
+    params.require(:book).permit(:title, :published_year, :genre, :price, :description, photos: [])
   end
 end

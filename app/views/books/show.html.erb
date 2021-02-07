@@ -2,9 +2,10 @@
 <div class="container">
 
 <h1><%= @book.title %></h1>
-<%#= image_tag(@book.img_url)  %>
-<%= cl_image_tag @book.photos.key, height: 300, width: 400, crop: :fill %>
-<p><%= @book.published_year %></p>
+    <%@book.photos.each do |photo|  %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <p><%= @book.published_year %></p>
   <p><%= @book.genre %></p>
   <p><%= @book.price %></p>
   <p><%= @book.description %></p>
