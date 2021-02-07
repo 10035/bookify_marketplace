@@ -1,4 +1,6 @@
 <h1><%= @author_name  %></h1>
 
 
-<%= link_to "Back", book_path(@book) %>
+<%= cl_image_tag @author.photo.key, height: 400, width: 600, crop: :fill %>
+
+<p><%= link_to "Back", book_path(@book) %></p>
