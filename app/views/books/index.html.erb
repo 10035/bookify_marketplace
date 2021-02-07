@@ -11,7 +11,7 @@
 
   <% @books.each do |book| %>
     <h1><%= book.title %></h1>
-    <%= cl_image_tag book.photo.key, height: 300, width: 400, crop: :fill %>
+    <%= cl_image_tag book.photos.key, height: 300, width: 400, crop: :fill %>
     <p><%= link_to "Book info", book_path(book) %></p>
   <% end %>
 
