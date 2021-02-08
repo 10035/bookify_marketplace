@@ -1,16 +1,18 @@
 
 <div class="container">
-<div class="jumbotron vertical-center">
-<h1 ><%= @book.title.upcase %></h1>
- <%# <%= image_tag(@book.img_url)  %>
-<p><%= @book.published_year %></p>
-  <p><%= @book.genre %></p>
-  <p><i class="fas fa-dollar-sign" ></i><%= @book.price %></p>
-  <p><%= @book.description %></p>
-  <p><%= @book.author.first_name%> <%=@book.author.last_name%></p>
-  <p><%= link_to "Author details", author_book_path%></p>
-  <%= link_to "Back", books_path%>
-</div>
+  <div class="jumbotron vertical-center">
+    <h1 ><%= @book.title.upcase %></h1>
+    <%@book.photos.each do |photo|  %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <p><%= @book.published_year %></p>
+    <p><%= @book.genre %></p>
+    <p><i class="fas fa-dollar-sign" ></i><%= @book.price %></p>
+    <p><%= @book.description %></p>
+    <p><%= @book.author.first_name%> <%=@book.author.last_name%></p>
+    <p><%= link_to "Author details", author_book_path%></p>
+    <%= link_to "Back", books_path%>
+  </div>
 </div>
 <hr>
 
