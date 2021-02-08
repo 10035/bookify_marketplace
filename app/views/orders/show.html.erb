@@ -1,7 +1,22 @@
+
+<h1>Order for <%= @book.title%></h1>
 <h2><%= @order.start_date %></h2>
 <h2><%= @order.end_date %></h2>
 <h2><%= @order.order_total %></h2>
 <h2><%= @order.quantity %></h2>
 <h2><%= @order.status %></h2>
 
-<%= link_to "Books",  books_path %>
+
+<hr>
+
+<h3>Edit Order</h3>
+<%= simple_form_for @order do |f| %>
+  <label>Check out</label>
+  <%= f.input :start_date %>
+  <label>Return</label>
+  <%= f.input :end_date %>
+  <%= f.submit "Rent" %>
+<% end %>
+
+<p><%= link_to "All orders",  orders_path %></p>
+<p><%= link_to "All books",  books_path %></p>
