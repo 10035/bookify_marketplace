@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(order_params)
 
-    redirect_to order_path(@order)
+    redirect_to orders_path
   end
 
   private
