@@ -1,14 +1,21 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/FKqxZ58bVjU/1600x900);">
   <div class="container">
+  <div class="row">
+    <div class="col-sm-12">
     <h1>RENT UNLIMITED BOOKS OF ALL <strong>GENRES</strong></h1>
       <p>Renting books saves you time, money, shelf space, and the environment!</p>
+      </div>
+      </div>
       <%= simple_form_for :search, url: root_path, method: :get do |f| %>
         <div class="search-form-control form-group">
-          <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+          <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="type your book title"/>
+          <div class="row justify-content-center">
           <button name="button" type="submit" class="btn btn-flat">
           <i class="fas fa-search"></i> search catalog
           </button>
+          </div>
         </div>
        <% end %>    
   </div>
 </div>
+

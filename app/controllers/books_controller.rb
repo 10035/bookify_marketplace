@@ -4,6 +4,11 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    if params[:query].present?
+      @books = Book.where(title: params[:query])
+    else
+      @books = Book.all
+    end
     # @books = policy_scope(Book).orders(created_at: :desc)
   end
 
