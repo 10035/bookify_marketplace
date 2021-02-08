@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @book = @order.book
   end
 
   def new
@@ -36,11 +37,14 @@ class OrdersController < ApplicationController
   end
 
   def edit
-
+    @order = Order.find(params[:id])
   end
 
   def update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
 
+    redirect_to order_path(@order)
   end
 
   private

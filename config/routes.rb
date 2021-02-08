@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :orders, only: [:index]
+  resources :orders, only: [:index, :show, :edit, :update]
   resources :reviews, only: [:index, :destroy]
 end
