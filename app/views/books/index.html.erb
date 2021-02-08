@@ -16,7 +16,8 @@
         <h3><%=link_to book.title.upcase, book_path(book) %></h3>
         <p><%= book.description %></p>
         <%book.photos.each do |photo|  %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+         <%# TODO: Review this line of code as it's generating a bug when browsing books %>
+          <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %> 
         <% end %>
       </div>
     <% end %>

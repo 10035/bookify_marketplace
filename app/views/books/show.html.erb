@@ -32,13 +32,38 @@
 
 <div class="container">
 <div class="jumbotron vertical-center">
-<h2>Your Order History for <strong><%= @book.title.upcase  %></strong></h2>
+<h2>Reviews</h2>
+
+<%# div %>
+  <%# icon total_score (# reviews) %>
+    <%# Criteria <bar icon> <score> %>
+      <%# Content %>
+      <%# Writing Style %>
+      <%# Value %>
+      <%# Delivery %>
+<%# div %>
+
+<%# <div> %>
+  <%# @reviews.each do |review| %>
+  <%# <p> @user.profile_pic </p>%>
+  <%# <p> @user.name </p>%>
+  <%# <p> @review.date </p>%>
+  <%# <p> @review.text </p>%>
+<%# </div> %>
+
 </div>
 </div>
 
+
+<div class="container">
+<div class="jumbotron vertical-center">
+<h2>Your Order History for <strong><%= @book.title.upcase  %></strong></h2>
 <% @orders.each do |order| %>
   <p><%= order.start_date%> <%= order.end_date%></p>
 <% end %>
+</div>
+</div>
+
 
 
 </div>
