@@ -12,12 +12,11 @@
 <div class="container">
   <div class="row">
     <% @books.each do |book| %>   
-      <div class="col-md-4" id="newcard">
+      <div class="col-lg-4" id="newcard">
         <h3><%=link_to book.title.upcase, book_path(book) %></h3>
         <p><%= book.description %></p>
         <%book.photos.each do |photo|  %>
-         <%# TODO: Review this line of code as it's generating a bug when browsing books %>
-          <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %> 
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fit %>
         <% end %>
       </div>
     <% end %>

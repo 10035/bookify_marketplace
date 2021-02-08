@@ -33,7 +33,7 @@
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "my orders", "#", class: "dropdown-item" %>
+            <%= link_to "my orders", "orders", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
@@ -55,7 +55,7 @@
 
 
 <div class="container">
-<div class="footer">
+<div class="footer nav justify-content-center">
   <div class="footer-links">
     <a href="#"><i class="fab fa-github"></i></a>
     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -63,9 +63,11 @@
     <a href="#"><i class="fab fa-twitter"></i></a>
   </div>
   <div class="footer-copyright">
-    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  
   </div>
+    
 </div>
+<p class="col-xs-1 text-center">For the <i class="fas fa-heart"></i> of books do follow us on social media</p>
 </div>
 
 
