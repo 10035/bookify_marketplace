@@ -18,6 +18,10 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def show
+    @review = Review.all   
+  end
+
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
