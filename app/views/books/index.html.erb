@@ -1,20 +1,26 @@
-<ul style="list-style-type:none; padding-left: 0;">
-  <li class="nav-item active ">
-  <%= link_to "Add book", new_book_path, class: "nav-link"  %>
+ <div class="container">
+  <ul class="nav justify-content-center" style="list-style-type:none; padding-left: 0;">
+  <li class="nav-item">
+  <%= link_to "ADD BOOK", new_book_path, class: "nav-link active"  %>
   </li>
-  <li class="nav-item active ">
-  <%= link_to "All Orders", orders_path, class: "nav-link"  %>
+  <li class="nav-item">
+  <%= link_to "ALL ORDERS", orders_path, class: "nav-link active"  %>
   </li>
 </ul>
+</div>
 
 <div class="container">
-  <% @books.each do |book| %>
-    <h1><%= book.title %></h1>
-    <%book.photos.each do |photo|  %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <div class="row">
+    <% @books.each do |book| %>   
+      <div class="col-md-4" id="newcard">
+        <h3><%=link_to book.title.upcase, book_path(book) %></h3>
+        <p><%= book.description %></p>
+        <%book.photos.each do |photo|  %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      </div>
     <% end %>
-    <p><%= link_to "Book info", book_path(book) %></p>
-  <% end %>
+  </div>
 </div>
 
 

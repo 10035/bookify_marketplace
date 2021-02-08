@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background:#e8e8e8;
+  background:#E5E5E5;
   border-bottom:1px solid rgba(109, 109, 109, 0.1);
   border-bottom-style:inset;
 }
@@ -9,7 +9,6 @@
 //   display: inline-block;
 //   align-items: center;
 // }
-
 
 .navbar-expand-sm .navbar-nav .nav-link{
   margin-top: 12px;
@@ -20,38 +19,44 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 300px;
+  width: 150px;
 }
 
 
 .nav-item a{
-  font-weight:700;
-  background:#FC5A36; 
-}
+  position: relative;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 800;
+  color: #14213D;
+  overflow: hidden;
+  background: linear-gradient(to right, #FCA311, #FCA311 50%, #14213D 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 275ms ease;
+  border-bottom: solid 3px;
+  margin: 5px;
 
+}
+.nav-item a:hover{
+  transition: all .4s ease;
+  background-position: 0 100%;
+  -webkit-transition: all .4s ease;
+}
 
 #navbarDropdown{
   margin: 10px;
 }
 
-
-.nav-item a:hover{
-  background: white; 
-  transition: all .4s ease;
-  -webkit-transition: all .4s ease;
-}
-
-
 .navbar-toggler-icon{
-  background-color:#FC5A36;
+  background-color:#FCA311;
   border-radius: 4px;
 }
 
-.navbar-light .navbar-toggler{
-  border-color:#e8e8e8;
+.navbar-light .navbar-toggler {
+  border-color:#E5E5E5;
 }
 
-
-.nav-link a{
-background-color:green;
-}

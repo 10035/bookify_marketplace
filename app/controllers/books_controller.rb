@@ -16,12 +16,12 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    authorize @book
+    # authorize @book
   end
 
   def create
     @book = Book.new(book_params)
-    authorize @book
+    # authorize @book
     @author = Author.find(params[:book][:author_id])
     @book.author = @author
     if @book.save

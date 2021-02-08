@@ -1,35 +1,40 @@
 
 <div class="container">
-
-<h1><%= @book.title %></h1>
-  <%@book.photos.each do |photo|  %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <p><%= @book.published_year %></p>
-  <p><%= @book.genre %></p>
-  <p><%= @book.price %></p>
-  <p><%= @book.description %></p>
-  <p><%= @book.author.first_name %> <%= @book.author.last_name %></p>
-  <p><%= link_to "Author info", author_book_path %></p>
-
-
-<%= link_to "Back to all books", books_path %>
-
+  <div class="jumbotron vertical-center">
+    <h1 ><%= @book.title.upcase %></h1>
+    <%@book.photos.each do |photo|  %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <p><%= @book.published_year %></p>
+    <p><%= @book.genre %></p>
+    <p><i class="fas fa-dollar-sign" ></i><%= @book.price %></p>
+    <p><%= @book.description %></p>
+    <p><%= @book.author.first_name%> <%=@book.author.last_name%></p>
+    <p><%= link_to "Author details", author_book_path%></p>
+    <%= link_to "Back", books_path%>
+  </div>
+</div>
 
 <hr>
 
+<div class="container">
+<div class="jumbotron vertical-center">
 <h2>Rent book</h2>
-<%= simple_form_for [@book, @order] do |f| %>
+  <%= simple_form_for [@book, @order] do |f| %>
   <label>Check out</label>
   <%= f.input :start_date %>
   <label>Return</label>
   <%= f.input :end_date %>
   <%= f.submit "Rent" %>
-<% end %>
+  <% end %> 
+</div>
+</div>
 
-
-
-<h2>Your Order History for <%= @book.title  %></h2>
+<div class="container">
+<div class="jumbotron vertical-center">
+<h2>Your Order History for <strong><%= @book.title.upcase  %></strong></h2>
+</div>
+</div>
 
 <% @orders.each do |order| %>
   <p><%= order.start_date%> <%= order.end_date%></p>
