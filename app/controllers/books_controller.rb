@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-
+  before_action :set_book, only: [:show, :author, :order]
 
   def index
     # @books = Book.all
@@ -13,7 +13,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
     @orders = @book.orders
     @order = Order.new
   end
@@ -35,19 +34,23 @@ class BooksController < ApplicationController
     end
   end
 
+  # using author/book relationship to display author info for a book
+  # /books/:id/author
   def author
-    @book = Book.find(params[:id])
     @author = @book.author
     @author_name =  @book.author[:first_name] +" "+ @book.author[:last_name]
   end
 
   def order
-    @book = Book.find(params[:id])
     @order = Order.find {|order| order.book_id == @book.id}
     @review = Review.find {|review| review.order_id == @order.id}
   end
 
   private
+
+  def set_book
+    @book = Book.find(params[:id])
+  end
 
   def book_params
     params.require(:book).permit(:title, :published_year, :genre, :price, :description, photos: [])
