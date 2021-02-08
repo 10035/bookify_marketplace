@@ -1,10 +1,9 @@
 <p><%= link_to "Back", book_path(@book) %></p>
 
 <h1><%= @author_name  %></h1>
+<%= cl_image_tag @author.photo.key, height: 400, width: 600, crop: :fill %>
 <% @author.books.each do |book| %>
   <p><%= link_to book.title, book_path(@book) %></p>
 <% end %>
-
-
 
 
