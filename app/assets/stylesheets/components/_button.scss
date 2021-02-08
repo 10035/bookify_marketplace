@@ -1,6 +1,32 @@
-.btn{
-  background-color:#FCA311;
-  border-radius: 3px;
-  margin-top: 4px;
-  width: 200px;
+// .btn{
+//   background-color:#FCA311;
+//   border-radius: 3px;
+//   margin-top: 4px;
+//   width: 200px;
+// }
+
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.form-control-underlined {
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
 }

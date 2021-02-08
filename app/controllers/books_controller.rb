@@ -3,9 +3,9 @@ class BooksController < ApplicationController
 
 
   def index
-    @books = Book.all
+    # @books = Book.all
     if params[:query].present?
-      @books = Book.where(title: params[:query])
+      @books = Book.where("title ILIKE :query OR description ILIKE :query",  query: "%#{params[:query]}")
     else
       @books = Book.all
     end
@@ -15,7 +15,6 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @orders = @book.orders
-
     @order = Order.new
   end
 
