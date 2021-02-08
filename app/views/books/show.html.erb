@@ -3,7 +3,7 @@
   <div class="jumbotron vertical-center">
     <h1 ><%= @book.title.upcase %></h1>
     <%@book.photos.each do |photo|  %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fit %>
     <% end %>
     <p><%= @book.published_year %></p>
     <p><%= @book.genre %></p>
@@ -14,8 +14,6 @@
     <%= link_to "Back", books_path%>
   </div>
 </div>
-
-<hr>
 
 <div class="container">
 <div class="jumbotron vertical-center">
