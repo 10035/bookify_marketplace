@@ -25,8 +25,10 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     # authorize @book
+    # attaching author to new book to be able to "create book"
     @author = Author.find(params[:book][:author_id])
     @book.author = @author
+
     if @book.save
       redirect_to book_path(@book)
     else
@@ -34,9 +36,9 @@ class BooksController < ApplicationController
     end
   end
 
-  # using author/book relationship to display author info for a book
-  # /books/:id/author
   def author
+    # using author/book relationship to display author info for a book
+    # /books/:id/author
     @author = @book.author
     @author_name =  @book.author[:first_name] +" "+ @book.author[:last_name]
   end
