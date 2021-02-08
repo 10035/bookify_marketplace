@@ -3,14 +3,18 @@ class BooksController < ApplicationController
 
 
   def index
-    @books = Book.all
+    # @books = Book.all
+    if params[:query].present?
+      @books = Book.where("title ILIKE :query OR description ILIKE :query",  query: "%#{params[:query]}")
+    else
+      @books = Book.all
+    end
     # @books = policy_scope(Book).orders(created_at: :desc)
   end
 
   def show
     @book = Book.find(params[:id])
     @orders = @book.orders
-
     @order = Order.new
   end
 
