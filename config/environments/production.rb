@@ -2,7 +2,7 @@ Rails.application.configure do
 
 
   # Devise configuration for login/logout
-  config.action_mailer.default_url_options = { host: 'localhost', port: 5000 }      
+  config.action_mailer.default_url_options = { host: 'localhost', port: 5000 }
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -41,7 +41,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :cloudinary
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil

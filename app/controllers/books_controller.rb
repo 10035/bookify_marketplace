@@ -16,17 +16,16 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    authorize @book
+    # authorize @book
   end
 
   def create
     @book = Book.new(book_params)
-    authorize @book
+    # authorize @book
     @author = Author.find(params[:book][:author_id])
     @book.author = @author
     if @book.save
-      redirect_to books_path
-
+      redirect_to book_path(@book)
     else
       render :new
     end
@@ -34,6 +33,7 @@ class BooksController < ApplicationController
 
   def author
     @book = Book.find(params[:id])
+    @author = @book.author
     @author_name =  @book.author[:first_name] +" "+ @book.author[:last_name]
   end
 
@@ -43,7 +43,9 @@ class BooksController < ApplicationController
     @review = Review.find {|review| review.order_id == @order.id}
   end
 
+  private
+
   def book_params
-    params.require(:book).permit(:title, :published_year, :genre, :price, :description, )
+    params.require(:book).permit(:title, :published_year, :genre, :price, :description, photos: [])
   end
 end

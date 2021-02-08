@@ -7,7 +7,9 @@ class OrdersController < ApplicationController
   def index
     # @book = Book.find(params[:book_id])
     # @order = @book.orders
+
     @orders = Order.all
+
   end
 
   def show
@@ -39,6 +41,13 @@ class OrdersController < ApplicationController
 
   def update
 
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+
+    redirect_to orders_path
   end
 
   private
