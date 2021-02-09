@@ -11,6 +11,4 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import 'flatpickr/dist/flatpickr.css';
-@import "flatpickr/plugins/confirmDate/confirmDate"
-
+@import "flatpickr/dist/themes/airbnb";
