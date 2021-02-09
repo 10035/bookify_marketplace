@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :author, :order]
 
 
-  # QUERY AND RETURN BOOKS BY TITLE IF QUERY PRESENT ELSE DISPLAY ALL BOOKS
+  # QUERY AND RETURN BOOKS BY TITLE AND DESCRIPTION IF QUERY PRESENT ELSE DISPLAY ALL BOOKS
   def index
     # @books = Book.all
     if params[:query].present?
