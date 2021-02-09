@@ -13,6 +13,9 @@ class BooksController < ApplicationController
   end
 
   def show
+    # using order to showcase order history for a book on book show page.
+    # Could be used as a way to display if book has been rented before..?
+    # /books/:id
     @orders = @book.orders
     @order = Order.new
   end
@@ -43,10 +46,12 @@ class BooksController < ApplicationController
     @author_name =  @book.author[:first_name] +" "+ @book.author[:last_name]
   end
 
-  def order
-    @order = Order.find {|order| order.book_id == @book.id}
-    @review = Review.find {|review| review.order_id == @order.id}
-  end
+  # def order
+  #   #
+  #   @order = Order.find {|order| order.book_id == @book.id}
+  #   #Finding a review associated with an order
+  #   @review = Review.find {|review| review.order_id == @order.id}
+  # end
 
   private
 
