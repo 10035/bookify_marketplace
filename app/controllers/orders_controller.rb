@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:review, :show, :edit, :update, :destroy]
 
+  # ADDS A BOOK REVIEW ON VIEWS/ORDERS/SHOW
   def review
     # to display an order's review or reviews on a page
     @review = @order.review_id

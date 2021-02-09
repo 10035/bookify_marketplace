@@ -27,11 +27,32 @@
   </div>
 </div>
 
+
+<%# BOOK REVIEWS %>
+
 <div class="container">
   <div class="jumbotron vertical-center">
-    <h2>Order History for <strong><%= @book.title.upcase  %></strong></h2>
-    <% @orders.each do |order| %>
-        <p><%= order.start_date%> <%= order.end_date%></p>
+    <h2>Book Reviews</h2>
+    <p><% @book.reviews.each do |review| %></p>
+    <p><%= review.rating %> <%= review.content %> </p>
     <% end %>
   </div>
 </div>
+
+
+
+
+
+
+
+
+<%# <div class="container">
+  <div class="jumbotron vertical-center">
+    <h2>Book Reviews <strong><%#=    
+    @book.title.upcase  %> 
+    <%# </strong></h2> %>
+    <%# @orders.each do |order| %>
+        <%# <p>= order.start_date = order.end_date</p>
+    <%# end %>
+  <%# </div>
+</div> %>

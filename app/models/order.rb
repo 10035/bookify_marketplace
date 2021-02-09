@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :book
-  has_one :review, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   belongs_to :user
 
 
