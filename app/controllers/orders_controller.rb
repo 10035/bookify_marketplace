@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:review, :show, :edit, :update, :destroy]
 
   def review
+    # to display an order's review
     @review = @order.review_id
   end
 

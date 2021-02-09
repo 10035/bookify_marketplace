@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:index, :show, :edit, :update]
-  resources :reviews, only: [:index, :destroy]
+  resources :reviews, only: [:destroy]
 end

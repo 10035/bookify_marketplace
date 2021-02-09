@@ -43,15 +43,8 @@ class BooksController < ApplicationController
     # using author/book relationship to display author info for a book
     # /books/:id/author
     @author = @book.author
-    @author_name =  @book.author[:first_name] +" "+ @book.author[:last_name]
+    @author_name =  @book.author[:first_name] + " " + @book.author[:last_name]
   end
-
-  # def order
-  #   #
-  #   @order = Order.find {|order| order.book_id == @book.id}
-  #   #Finding a review associated with an order
-  #   @review = Review.find {|review| review.order_id == @order.id}
-  # end
 
   private
 
