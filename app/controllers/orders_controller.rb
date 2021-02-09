@@ -1,19 +1,19 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: [:review, :show, :edit, :update, :destroy]
+
   def review
-    @order = Order.find(params[:id])
+    # to display an order's review or reviews on a page
     @review = @order.review_id
   end
 
   def index
-    # @book = Book.find(params[:book_id])
-    # @order = @book.orders
-
+    #  /orders
     @orders = Order.all
-
   end
 
   def show
-    @order = Order.find(params[:id])
+    # orders/:id
+    # grabbing linked book to show book details
     @book = @order.book
   end
 
@@ -23,12 +23,14 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    # finding book to link to @order to create order
     @book = Book.find(params[:book_id])
+    # linking book to order
     @order.book = @book
+    # linking user to order
     @order.user = current_user
 
     if @order.save
-      # redirect_to book_path(@book)
       redirect_to  book_path(@book)
     else
       render :new
@@ -37,24 +39,26 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = Order.find(params[:id])
   end
 
   def update
-    @order = Order.find(params[:id])
     @order.update(order_params)
 
     redirect_to orders_path
   end
 
   def destroy
-    @order = Order.find(params[:id])
+    # deletes an order and it's review
     @order.destroy
 
     redirect_to orders_path
   end
 
   private
+
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
   def order_params
     params.require(:order).permit(:start_date, :end_date, :order_total, :quantity, :status)

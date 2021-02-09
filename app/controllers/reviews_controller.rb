@@ -1,14 +1,15 @@
 class ReviewsController < ApplicationController
+  before_action :set_order, only: [:new, :create]
 
   def new
-    @order = Order.find(params[:order_id])
     @review = Review.new
   end
 
   def create
     @review = Review.new(review_params)
-    @order = Order.find(params[:order_id])
+    # link order to review to create review
     @review.order = @order
+    # link user to review to create review
     @review.user = current_user
 
     if @review.save
@@ -29,6 +30,11 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def set_order
+    # find the order to link to a new review
+    @order = Order.find(params[:order_id])
+  end
 
   def review_params
     params.require(:review).permit(:rating, :content)

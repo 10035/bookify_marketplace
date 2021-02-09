@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="jumbotron vertical-center">
     <h1 ><%= @book.title.upcase %></h1>
@@ -16,56 +15,23 @@
 </div>
 
 <div class="container">
-<div class="jumbotron vertical-center">
-<h2>Rent book</h2>
-  <%= simple_form_for [@book, @order] do |f| %>
-  <label>Check out</label>
-  <%= f.input :start_date %>
-  <label>Return</label>
-  <%= f.input :end_date %>
-  <%= f.submit "Rent" %>
-  <% end %> 
-</div>
+  <div class="jumbotron vertical-center">
+    <h2>Rent book</h2>
+    <%= simple_form_for [@book, @order] do |f| %>
+    <label>Check out</label>
+    <%= f.input :start_date %>
+    <label>Return</label>
+    <%= f.input :end_date %>
+    <%= f.submit "Rent" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="container">
-<div class="jumbotron vertical-center">
-<h2>Reviews</h2>
-
-<%= Review.all %>
-
-<%# @review.rating %>  <%# TODO: IMPLEMENT RATING METHOD  %>
-
-<%# div %>
-  <%# icon total_score (# reviews) %>
-    <%# Criteria <bar icon> <score> %>
-      <%# Content %>
-      <%# Writing Style %>
-      <%# Value %>
-      <%# Delivery %>
-<%# div %>
-
-<%# <div> %>
-  <%# @reviews.each do |review| %>
-  <%# <p> @user.profile_pic </p>%>
-  <%# <p> @user.name </p>%>
-  <%# <p> @review.date </p>%>
-  <%# <p> @review.text </p>%>
-<%# </div> %>
-
-</div>
-</div>
-
-
-<div class="container">
-<div class="jumbotron vertical-center">
-<h2>Your Order History for <strong><%= @book.title.upcase  %></strong></h2>
-<% @orders.each do |order| %>
-  <p><%= order.start_date%> <%= order.end_date%></p>
-<% end %>
-</div>
-</div>
-
-
-
+  <div class="jumbotron vertical-center">
+    <h2>Order History for <strong><%= @book.title.upcase  %></strong></h2>
+    <% @orders.each do |order| %>
+        <p><%= order.start_date%> <%= order.end_date%></p>
+    <% end %>
+  </div>
 </div>
