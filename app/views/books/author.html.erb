@@ -1,7 +1,8 @@
 <div class="container">
   <div class="jumbotron vertical-center">
     <h1><%= @author_name  %></h1>
-    <%= cl_image_tag @author.photo.key, height: 400, width: 600, crop: :fill %>
+    <%# TODO: REVIEW THIS LINE OF CODE AS ITS GENERATING A BUG WHEN REVIEWING AUTHOR %>
+    <%# <%= cl_image_tag @author.photo.key, height: 400, width: 600, crop: :fill %> 
     <%= link_to "Back", book_path(@book) %>
   </div>
 </div>
