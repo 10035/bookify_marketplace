@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:review, :show, :edit, :update, :destroy]
 
   def review
-    # to display an order's review
+    # to display an order's review or reviews on a page
     @review = @order.review_id
   end
 
@@ -23,12 +23,14 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    # finding book to link to @order to create order
     @book = Book.find(params[:book_id])
+    # linking book to order
     @order.book = @book
+    # linking user to order
     @order.user = current_user
 
     if @order.save
-      # redirect_to book_path(@book)
       redirect_to  book_path(@book)
     else
       render :new
@@ -46,6 +48,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    # deletes an order and it's review
     @order.destroy
 
     redirect_to orders_path
