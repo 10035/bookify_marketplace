@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-
+  before_action :set_book, only: [:show, :author, :order]
 
   def index
     # @books = Book.all
@@ -13,7 +13,9 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
+    # Could be used as a way to display if book has been rented?
+    # /books/:id
+    # grab orders showing a user's order history for a book on book show page
     @orders = @book.orders
     @order = Order.new
   end
@@ -26,8 +28,10 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     # authorize @book
+    # attaching author to new book to be able to "create book"
     @author = Author.find(params[:book][:author_id])
     @book.author = @author
+
     if @book.save
       redirect_to book_path(@book)
     else
@@ -36,18 +40,17 @@ class BooksController < ApplicationController
   end
 
   def author
-    @book = Book.find(params[:id])
+    # using author/book relationship to display author info for a book
+    # /books/:id/author
     @author = @book.author
-    @author_name =  @book.author[:first_name] +" "+ @book.author[:last_name]
-  end
-
-  def order
-    @book = Book.find(params[:id])
-    @order = Order.find {|order| order.book_id == @book.id}
-    @review = Review.find {|review| review.order_id == @order.id}
+    @author_name =  @book.author[:first_name] + " " + @book.author[:last_name]
   end
 
   private
+
+  def set_book
+    @book = Book.find(params[:id])
+  end
 
   def book_params
     params.require(:book).permit(:title, :published_year, :genre, :price, :description, photos: [])

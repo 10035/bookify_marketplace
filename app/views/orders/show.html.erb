@@ -1,15 +1,15 @@
 
-<h1>Order for <%= @book.title%></h1>
-<h2><%= @order.start_date %></h2>
-<h2><%= @order.end_date %></h2>
+<h1>Order details for <%= @book.title%></h1>
+<h2>Start date: <%= @order.start_date %></h2>
+<h2>End date: <%= @order.end_date %></h2>
 <h2><%= @order.order_total %></h2>
 <h2><%= @order.quantity %></h2>
 <h2><%= @order.status %></h2>
 
-
+<%= link_to "Add review",  new_order_review_path(@order) %>
 <hr>
 
-<h3>Edit Order</h3>
+<h3>Edit Order Dates</h3>
 <%= simple_form_for @order do |f| %>
   <label>Check out</label>
   <%= f.input :start_date %>

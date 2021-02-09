@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="jumbotron vertical-center">
     <h1 ><%= @book.title.upcase %></h1>
@@ -16,27 +15,23 @@
 </div>
 
 <div class="container">
-<div class="jumbotron vertical-center">
-<h2>Rent book</h2>
-  <%= simple_form_for [@book, @order] do |f| %>
-  <label>Check out</label>
-  <%= f.input :start_date %>
-  <label>Return</label>
-  <%= f.input :end_date %>
-  <%= f.submit "Rent" %>
-  <% end %> 
-</div>
+  <div class="jumbotron vertical-center">
+    <h2>Rent book</h2>
+    <%= simple_form_for [@book, @order] do |f| %>
+    <label>Check out</label>
+    <%= f.input :start_date %>
+    <label>Return</label>
+    <%= f.input :end_date %>
+    <%= f.submit "Rent" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="container">
-<div class="jumbotron vertical-center">
-<h2>Your Order History for <strong><%= @book.title.upcase  %></strong></h2>
-</div>
-</div>
-
-<% @orders.each do |order| %>
-  <p><%= order.start_date%> <%= order.end_date%></p>
-<% end %>
-
-
+  <div class="jumbotron vertical-center">
+    <h2>Order History for <strong><%= @book.title.upcase  %></strong></h2>
+    <% @orders.each do |order| %>
+        <p><%= order.start_date%> <%= order.end_date%></p>
+    <% end %>
+  </div>
 </div>
