@@ -5,27 +5,51 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# Author.all.map {|author| author.id}.sample
 
-img_urls = ["https://i.picsum.photos/id/722/200/200.jpg?hmac=wNug9Ox95uwU6niL7InSfuJXj6KQLckDilJExPwv75Q", "https://i.picsum.photos/id/195/200/200.jpg?hmac=XbxBxpgP4z7t-dGvrqGicWMyRkF_t0suZz3RqiOsY64", "https://i.picsum.photos/id/880/200/200.jpg?hmac=g5VV-eqqKk9TdTvkzKu6PzjRtzrqVhrj6v7H9ZT7PDo" ,"https://i.picsum.photos/id/659/200/200.jpg?hmac=kFpdD3XTBGwPUAH1tD-AiWigstjIX8WGIcyySuVQIvE", "https://i.picsum.photos/id/1/200/200.jpg?hmac=jZB9EZ0Vtzq-BZSmo7JKBBKJLW46nntxq79VMkCiBG8", "https://i.picsum.photos/id/134/200/200.jpg?hmac=a3L-JjVSGeG8w3SdNpzxdh8WSC0xHJXgeD6QryCK7pU", "https://i.picsum.photos/id/194/200/200.jpg?hmac=f1VYjvgDG_6vPwJyTb-Xl1HpXKM23stmhFUnmPE_yL8", "https://i.picsum.photos/id/556/200/200.jpg?hmac=5uOJ4fW7ElE2P5NfHlvz2zx4d99Ts2-lxy8tucygHLc", "https://i.picsum.photos/id/505/200/200.jpg?hmac=c295sjTIAZ_9Gj-PENrzAbATNIiWPL1dmhIhWndYnyo", "https://i.picsum.photos/id/66/200/200.jpg?hmac=gaKXe-rWmo5fSEm79TTkW_yFJLECw3FdRCh6Dm7jp4g", "https://i.picsum.photos/id/203/200/200.jpg?hmac=fydyJjsULq7iMwTTIg_m6g_PQQ1paJrufNsEiqbJRsg"]
 
-10.times {
-  Author.create!(
+require "open-uri"
+
+authors = ["https://images.unsplash.com/photo-1594616838951-c155f8d978a0?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fGF2YXRhcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60", "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjl8fGF2YXRhcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60", "https://images.unsplash.com/photo-1558898479-33c0057a5d12?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjZ8fGF2YXRhcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60", "https://images.unsplash.com/photo-1528763380143-65b3ac89a3ff?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjR8fGF2YXRhcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60", "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60", "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60", "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60", "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1296&q=60", "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1296&q=60", "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1296&q=60"]
+
+
+puts "Deleting seed"
+
+Author.destroy_all
+Book.destroy_all
+User.destroy_all
+
+puts "Seeding starting..."
+
+10.times do |idx|
+  author = authors[idx]
+  file = URI.open(author)
+
+  author = Author.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name
     )
-}
+  author.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  author.save
+end
 
-10.times {
-  Book.create!(
+
+10.times do |num|
+  author_id = num + 1
+  file = URI.open('https://picsum.photos/300/300')
+
+  book = Book.new(
     title: Faker::Book.title,
-    published_year: [1920...2020].sample,
+    published_year: rand(1900..2020),
     genre: Faker::Book.genre,
-    price: Faker::Number.decimal(l_digits: 2),
+    price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
     description: Faker::Lorem.paragraphs,
-    img_url: img_urls.sample,
-    author_id: Author.all.map {|author| author.id}.sample
+    author_id: author_id
     )
-}
+  book.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  book.save
+end
+
 
 2.times {
   User.create!(
@@ -33,3 +57,12 @@ img_urls = ["https://i.picsum.photos/id/722/200/200.jpg?hmac=wNug9Ox95uwU6niL7In
     password: 12345678
     )
 }
+
+
+
+puts Author.count
+puts Book.count
+puts User.count
+
+
+puts "Seeding complete"

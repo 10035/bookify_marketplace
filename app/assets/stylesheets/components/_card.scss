@@ -1,7 +1,14 @@
-.cards {
+.card {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+}
+
+
+.card-body{
+  border-style: solid;
+  border-radius: 3px;
+  border-color: red;
 }
 
 // Smallest device
@@ -38,3 +45,13 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+
+#newcard{
+  background-color: white;
+  border-radius: 3px;
+  border: solid 0.05px;
+  border-color: rgba(0, 0, 0, .1);
+  padding: 15px;
+}
+

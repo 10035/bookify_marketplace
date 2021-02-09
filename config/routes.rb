@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders, only: [:destroy, :new] do
+  resources :orders, only: [:destroy] do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :orders, only: [:index]
-  resources :reviews, only: [:index, :destroy]
+  resources :orders, only: [:index, :show, :edit, :update]
+  resources :reviews, only: [:destroy]
 end

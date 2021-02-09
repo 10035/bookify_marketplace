@@ -1,42 +1,30 @@
-
 <div class="container">
-
-<h1><%= @book.title %></h1>
-<%#= image_tag(@book.img_url)  %>
-<p><%= @book.published_year %></p>
-  <p><%= @book.genre %></p>
-  <p><%= @book.price %></p>
-  <p><%= @book.description %></p>
-  <p><%= @book.author.first_name %> <%= @book.author.last_name %></p>
-  <p><%= link_to "Author info", author_book_path %></p>
-
-<%= link_to "Back", books_path %>
-
-
-<hr>
+  <div class="jumbotron vertical-center">
+    <h1 ><%= @book.title.upcase %></h1>
+    <%@book.photos.each do |photo|  %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fit %>
+    <% end %>
+    <p><%= @book.published_year %></p>
+    <p><%= @book.genre %></p>
+    <p><i class="fas fa-dollar-sign" ></i><%= @book.price %></p>
+    <p><%= @book.description %></p>
+    <p><%= @book.author.first_name%> <%=@book.author.last_name%></p>
+    <p><%= link_to "Author details", author_book_path%></p>
+    <%= link_to "Back", books_path%>
+  </div>
+</div>
 
 <h2>Rent book</h2>
 
-<div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;" id='book-order-dates' data-unavailable="<%= @book.unavailable_dates.to_json %>">
-    <%# if current_user.id != @book.user_id  %>
-       <%= simple_form_for([@book, @order]) do |f| %>
-           <%= f.input :start_date, as: :string, type: :text, input_html: { id: 'order_start_date'}  %>
-           <%= f.input :end_date, as: :string, type: :text,  input_html: { id: 'order_end_date'}  %>
-           <%= f.submit "Rent", class: "btn btn-primary" %>
-        <% end %>
-    <%# end %>
- </div>
-
-
-<!-- <%#= simple_form_for [@book, @order] do |f| %>
-  <label>Check out</label>
-  <%#= f.input :start_date %>
-  <label>Return</label>
-  <%#= f.input :end_date %>
-  <%#= f.submit "Rent" %>
-<%# end %> -->
-
-
+<div>
+  <%# if current_user.id != @book.user_id  %>
+     <%= simple_form_for([@book, @order]) do |f| %>
+         <%= f.input :start_date, as: :string, type: :text, input_html: { id: 'order_start_date'}  %>
+         <%= f.input :end_date, as: :string, type: :text,  input_html: { id: 'order_end_date'}  %>
+         <%= f.submit "Rent", class: "btn btn-primary" %>
+      <% end %>
+  <%# end %>
+</div>
 
 <h2>Your Order History for <%= @book.title  %></h2>
 
@@ -44,5 +32,16 @@
   <p><%= order.start_date%> <%= order.end_date%></p>
 <% end %>
 
-
+<div class="container">
+  <div class="jumbotron vertical-center">
+    <h2>Rent book</h2>
+    <%= simple_form_for [@book, @order] do |f| %>
+    <label>Check out</label>
+    <%= f.input :start_date %>
+    <label>Return</label>
+    <%= f.input :end_date %>
+    <%= f.submit "Rent" %>
+    <% end %>
+  </div>
 </div>
+
