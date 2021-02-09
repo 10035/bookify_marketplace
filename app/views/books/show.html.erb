@@ -45,3 +45,14 @@
   </div>
 </div>
 
+<%# BOOK REVIEWS %>
+
+<div class="container">
+  <div class="jumbotron vertical-center">
+    <h2>Book Reviews</h2>
+    <p><% @book.reviews.each do |review| %></p>
+    <p><%= review.rating %> <%= review.content %> </p>
+    <% end %>
+  </div>
+</div>
+

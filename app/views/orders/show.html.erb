@@ -6,7 +6,8 @@
 <h2><%= @order.quantity %></h2>
 <h2><%= @order.status %></h2>
 
-<%= link_to "Add review",  new_order_review_path(@order) %>
+<%# ADD REVIEW TO BOOK YAY %>
+<%= link_to "Add review",  new_order_review_path(@order), class: "btn btn-primary" %>
 <hr>
 
 <h3>Edit Order Dates</h3>
