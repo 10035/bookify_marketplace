@@ -1,9 +1,0 @@
-<h1>Edit Order</h1>
-
-<%= simple_form_for [@book, @order] do |f| %>
-  <label>Check out</label>
-  <%= f.text_field :start_date, data: { behavior: "flatpickr"} %>
-  <label>Return</label>
-  <%= f.text_field :end_date, data: { behavior: "flatpickr"} %>
-  <%= f.submit "Update order" %>
-<% end %>
