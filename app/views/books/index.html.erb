@@ -1,15 +1,4 @@
 <div class="container">
-  <ul class="nav justify-content-center" style="list-style-type:none; padding-left: 0;">
-    <li class="nav-item">
-      <%= link_to "ADD BOOK", new_book_path, class: "nav-link active"  %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "ALL ORDERS", orders_path, class: "nav-link active"  %>
-    </li>
-  </ul>
-</div>
-
-<div class="container">
   <div class="row">
     <% @books.each do |book| %>
       <div class="col-lg-4" id="newcard">
