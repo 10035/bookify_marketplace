@@ -19,9 +19,9 @@
     <h2>Rent book</h2>
     <%= simple_form_for [@book, @order] do |f| %>
     <label>Check out</label>
-    <%= f.input :start_date %>
+    <%= f.text_field :start_date, data: { behavior: "flatpickr"} %>
     <label>Return</label>
-    <%= f.input :end_date %>
+    <%= f.text_field :end_date, data: { behavior: "flatpickr"} %>
     <%= f.submit "Rent" %>
     <% end %>
   </div>
@@ -48,8 +48,8 @@
 
 <%# <div class="container">
   <div class="jumbotron vertical-center">
-    <h2>Book Reviews <strong><%#=    
-    @book.title.upcase  %> 
+    <h2>Book Reviews <strong><%#=
+    @book.title.upcase  %>
     <%# </strong></h2> %>
     <%# @orders.each do |order| %>
         <%# <p>= order.start_date = order.end_date</p>
