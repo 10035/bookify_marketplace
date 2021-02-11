@@ -2,12 +2,11 @@
   <div class="container">
   <div class="row">
     <div class="col-sm-12">
-    <h1>RENT UNLIMITED BOOKS OF ALL <strong>GENRES</strong></h1>
+    <h1><strong>RENT UNLIMITED BOOKS OF ALL GENRES</strong></h1>
       <p>Renting books saves you time, money, shelf space, and the environment!</p>
       </div>
       </div>
-
-      <%= form_tag books_path, method: :get do %>
+      <%= form_tag books_path, method: :get do %>   <%# SEARCH BAR HOME PAGE %>
         <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
             <div class="input-group">
             <%= text_field_tag :query, params[:query], class: "form-control border-0 bg-light", placeholder: "search for your favourite title"%>
