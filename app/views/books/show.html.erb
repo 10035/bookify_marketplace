@@ -10,25 +10,22 @@
     <p><%= @book.description %></p>
     <p><%= @book.author.first_name%> <%=@book.author.last_name%></p>
     <p><%= link_to "Author details", author_book_path%></p>
-    <%= link_to "Back", books_path%>
+    <p><%= link_to "Back", books_path%></p>
+    <p><%= link_to "Delete book", book_path(@book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></p>
   </div>
 </div>
 
 
 <div class="container">
   <div class="jumbotron vertical-center">
-    <div class="container">
-      <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-        <h2>Rent <%=  %></h2>
-        <%# if current_user.id != @book.user_id  %>
-          <%= simple_form_for([@book, @order]) do |f| %>
-            <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-            <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-            <%= f.button :submit, "Rent Book", class: "btn btn-primary" %>
-          <% end %>
-        <%# end %>
-      </div>
-    </div>
+    <h2>Rent book</h2>
+    <%= simple_form_for [@book, @order] do |f| %>
+    <label>Check out</label>
+    <%= f.text_field :start_date, data: { behavior: "flatpickr"} %>
+    <label>Return</label>
+    <%= f.text_field :end_date, data: { behavior: "flatpickr"} %>
+    <%= f.submit "Rent", class: "btn btn-info mt-3" %>
+    <% end %>
   </div>
 </div>
 
@@ -41,4 +38,3 @@
     <% end %>
   </div>
 </div>
-

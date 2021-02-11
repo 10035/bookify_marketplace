@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
@@ -13,7 +14,6 @@
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon px-2">
     <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "booklogo.svg" %>
-    <%# https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png %>
     <% end %>
 
 
@@ -26,6 +26,11 @@
     <ul class="navbar-nav mr-auto">
 
       <% if user_signed_in? %>
+          <ul class="nav justify-content-center" style="list-style-type:none; padding-left: 0;">
+            <li class="nav-item">
+              <%= link_to "ADD BOOK", new_book_path, class: "nav-link active"  %>
+            </li>
+          </ul>
         <li class="nav-item active ">
           <%= link_to "BROWSE BOOKS", "/books", id:"custom-link", class: "nav-link" %>
         </li>
@@ -38,36 +43,33 @@
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
+        <li class="nav-item mt">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>
   </div>
 </div>
-
-    <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <%= yield %>
 
   </body>
 </html>
 
+<div class="container pt-4">
+  <div class="footer nav justify-content-center">
+    <div class="footer-links">
+      <a href="#"><i class="fab fa-github mr-4 mb-4 pt-4"></i></a>
+      <a href="#"><i class="fab fa-instagram mr-4 mb-4 pt-4"></i></a>
+      <a href="#"><i class="fab fa-facebook mr-4 mb-4 pt-4"></i></a>
+      <a href="#"><i class="fab fa-twitter mr-4 mb-4 pt-4"></i></a>
+    </div>
 
-<div class="container">
-<div class="footer nav justify-content-center">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
+    <div class="footer-copyright">
+      <p class="col-xs-1 text-center">For the <i class="fas fa-heart"></i> of books do follow us on social media</p>
+    </div>
   </div>
-  <div class="footer-copyright">
-
-  </div>
-
-</div>
-<p class="col-xs-1 text-center">For the <i class="fas fa-heart"></i> of books do follow us on social media</p>
 </div>
 
 
