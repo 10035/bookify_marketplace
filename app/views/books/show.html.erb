@@ -4,6 +4,7 @@
     <%@book.photos.each do |photo|  %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fit %>
     <% end %>
+    <p class="mt-3"><%= @book.reviews.blank? ? "" : "⭐️" * @book.reviews.average(:rating).round(2) %></p>
     <p><%= @book.published_year %></p>
     <p><%= @book.genre %></p>
     <p><i class="fas fa-dollar-sign" ></i><%= @book.price %></p>

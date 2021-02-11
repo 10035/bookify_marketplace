@@ -8,7 +8,7 @@
         <% end %>
 
         <div class="card-body">
-          <p><%= book.reviews.blank? ? 0 : "⭐️" * book.reviews.average(:rating).round(2) %></p>
+          <p><%= book.reviews.blank? ? "" : "⭐️" * book.reviews.average(:rating).round(2) %></p>
           <h3><%=link_to book.title.upcase, book_path(book) %></h3>
           <p class="card-text"><%= book.description %></p>
         </div>
@@ -16,6 +16,3 @@
     <% end %>
   </div>
 </div>
-
-
-<!-- Book.last.reviews.average(:rating).round(2) -->
