@@ -6,15 +6,13 @@
       <p>Renting books saves you time, money, shelf space, and the environment!</p>
       </div>
       </div>
-      
-      <%# SEARCH BAR HOME PAGE %>
-      <%= form_tag books_path, method: :get do %>
+      <%= form_tag books_path, method: :get do %>   <%# SEARCH BAR HOME PAGE %>
         <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
             <div class="input-group">
             <%= text_field_tag :query, params[:query], class: "form-control border-0 bg-light", placeholder: "search for your favourite title"%>
             <div class="input-group-append">
-            <%= submit_tag "Search Catalog", class: "btn btn-link text-primary" %>
-      <% end %>
+            <%= submit_tag "Search Catalog", class: "btn btn-link text-warning" %>
+    <% end %>
             </div>
             </div>
        </div>
