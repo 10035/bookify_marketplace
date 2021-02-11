@@ -10,7 +10,8 @@
     <p><%= @book.description %></p>
     <p><%= @book.author.first_name%> <%=@book.author.last_name%></p>
     <p><%= link_to "Author details", author_book_path%></p>
-    <%= link_to "Back", books_path%>
+    <p><%= link_to "Back", books_path%></p>
+    <p><%= link_to "Delete book", book_path(@book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></p>
   </div>
 </div>
 
@@ -48,8 +49,8 @@
 
 <%# <div class="container">
   <div class="jumbotron vertical-center">
-    <h2>Book Reviews <strong><%#=    
-    @book.title.upcase  %> 
+    <h2>Book Reviews <strong><%#=
+    @book.title.upcase  %>
     <%# </strong></h2> %>
     <%# @orders.each do |order| %>
         <%# <p>= order.start_date = order.end_date</p>
