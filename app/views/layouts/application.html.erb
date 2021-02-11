@@ -49,25 +49,34 @@
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
   </body>
+
+<div class="footer-basic">
+        <footer>
+            <div class="social">
+            <a href="#"><i class="icon fab fa-github"></i></a>
+            <a href="#"><i class="icon fab fa-twitter""></i></a>
+            <a href="#"><i class="icon fab fa-facebook""></i></a>
+            </div>
+
+            <ul class="list-inline">
+                <%= link_to "/" do %><li class="list-inline-item">home</li><% end %>
+                <%= link_to "/books" do %><li class="list-inline-item">catalog</li><% end %>
+                <%= link_to "orders" do %><li class="list-inline-item">orders</li><% end %>
+            </ul>
+            <p class="copyright">Bookify Team © 2021</p>
+        </footer>
+    </div>
+
+
+
+    
+</div>
+
+</div>
+
 </html>
 
 
-<div class="container">
-<div class="footer nav justify-content-center">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-  </div>
-  <div class="footer-copyright">
-  
-  </div>
-    
-</div>
-<p class="col-xs-1 text-center">For the <i class="fas fa-heart"></i> of books do follow us on social media</p>
-</div>
 
 

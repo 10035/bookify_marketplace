@@ -1,4 +1,5 @@
 
+<div class="container">
 <h1>Order details for <%= @book.title%></h1>
 <h2>Start date: <%= @order.start_date %></h2>
 <h2>End date: <%= @order.end_date %></h2>
@@ -8,16 +9,29 @@
 
 <%# ADD REVIEW TO BOOK YAY X3%>
 <%= link_to "Add review",  new_order_review_path(@order), class: "btn btn-primary" %>
+</div>
 <hr>
 
+<div class="container">
+<div div class="justify-content-center">
 <h3>Edit Order Dates</h3>
 <%= simple_form_for @order do |f| %>
   <label>Check out</label>
   <%= f.input :start_date %>
   <label>Return</label>
   <%= f.input :end_date %>
-  <%= f.submit "Rent" %>
+  <%= f.submit "Rent", class:"btns" %>
 <% end %>
+</div>
+</div>
 
-<p><%= link_to "All orders",  orders_path %></p>
-<p><%= link_to "All books",  books_path %></p>
+
+<div class="container">
+  <ul class="nav justify-content-center" style="list-style-type:none; padding-left: 0;">
+    <li class="nav-item">
+      <%= link_to "ALL ORDERS", orders_path, class: "nav-link active"  %>
+    </li>
+     <li class="nav-item">
+      <%= link_to "ALL BOOKS", books_path, class: "nav-link active"  %>
+    </li>
+  </ul>
