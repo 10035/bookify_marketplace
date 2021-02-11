@@ -38,7 +38,7 @@
     <p><% @book.reviews.each do |review| %></p>
       <span class="mr-4"><%= cl_image_tag User.find(review.user_id).photo.key, class: "avatar", crop: :fill %></span>
       <span><%= "⭐️" * review.rating %></span>
-      <p class="mt-2"><strong><%= User.find(review.user_id).email %></strong></p>
+      <p class="mt-2"><strong><%= User.find(review.user_id).email.split("@")[0] %></strong></p>
       <p class="mt-2"> <%= review.content %> </p>
       <hr>
     <% end %>
