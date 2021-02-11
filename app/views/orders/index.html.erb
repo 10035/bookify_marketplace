@@ -18,8 +18,8 @@
           <h2><%= order.quantity %></h2>
           <h2><%= order.status %></h2>
           <h2><%= link_to "Go to Order", order_path(order), class: "btn btn-primary" %></h2>
-          <h2><%= link_to "Cancel order", order_path(order), method: :delete,
-                    data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></h2>
+          <p><%= link_to "Cancel order", order_path(order), method: :delete,
+                    data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></p>
           <hr>
     </div>
         <% end %>
