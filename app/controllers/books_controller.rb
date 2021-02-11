@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   def index
     # @books = Book.all
-    if params[:query].present?
+    if params[:query].present? 
       @books = Book.where("title ILIKE :query OR description ILIKE :query",  query: "%#{params[:query]}")
     else
       @books = Book.all
@@ -13,7 +13,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    # Could be used as a way to display if book has been rented?
+    # Could be   used as a way to display if book has been rented?
     # /books/:id
     # grab orders showing a user's order history for a book on book show page
     @orders = @book.orders
