@@ -15,8 +15,10 @@ authors = ["https://images.unsplash.com/photo-1594616838951-c155f8d978a0?ixid=MX
 
 puts "Deleting seed"
 
-Author.destroy_all
+Review.delete_all
+Order.delete_all
 Book.destroy_all
+Author.destroy_all
 User.destroy_all
 
 puts "Seeding starting..."
@@ -30,12 +32,11 @@ puts "Seeding starting..."
     last_name: Faker::Name.last_name
     )
   author.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-  author.save
+  author.save!
 end
-
+puts "#{Author.count} authors created"
 
 10.times do |num|
-  author_id = num + 1
   file = URI.open('https://picsum.photos/300/300')
 
   book = Book.new(
@@ -43,26 +44,51 @@ end
     published_year: rand(1900..2020),
     genre: Faker::Book.genre,
     price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
-    description: Faker::Lorem.paragraphs,
-    author_id: author_id
+    description: Faker::Quote.matz,
+    author_id: Author.all.sample.id
     )
   book.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-  book.save
+  book.save!
 end
 
+puts "#{Book.count} Users created"
 
-2.times {
+3.times {
   User.create!(
     email: Faker::Internet.email,
     password: 12345678
     )
 }
+puts "#{User.count} Users created"
 
+5.times {
+  Order.create!(
+    start_date: Faker::Date.backward(days: 14),
+    end_date: Faker::Date.forward(days: 14),
+    book_id: Book.all.sample.id,
+    user_id: User.all.sample.id
+    )
+}
+puts "#{Order.count} Orders created"
 
+5.times {
+  order = Order.all.sample
+  user_id = order["user_id"].to_i
+  order_id = order["id"].to_i
+  Review.create!(
+    rating: rand(1..5),
+    content: Faker::Quote.yoda,
+    order_id: order_id,
+    user_id: user_id
+    )
+}
+puts "#{Review.count} Reviews created"
 
 puts Author.count
 puts Book.count
 puts User.count
+puts Order.count
+puts Review.count
 
 
 puts "Seeding complete"
