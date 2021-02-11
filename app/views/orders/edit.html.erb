@@ -1,9 +1,0 @@
-<h1>Edit Order</h1>
-
-<%= simple_form_for [@book, @order] do |f| %>
-  <label>Check out</label>
-  <%= f.input :start_date %>
-  <label>Return</label>
-  <%= f.input :end_date %>
-  <%= f.submit "Rent" %>
-<% end %>
