@@ -3,6 +3,6 @@ class Author < ApplicationRecord
   has_one_attached :photo
 
   # TBC IF MODULE REQUIRED HERE
-  include PgSearch::Model   
-  multisearchable against: :book
+  include PgSearch::Model
+  multisearchable against: :books
 end

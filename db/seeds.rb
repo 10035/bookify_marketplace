@@ -22,7 +22,7 @@ Author.destroy_all
 User.destroy_all
 
 puts "Seeding starting..."
-
+puts "Creating authors..."
 10.times do |idx|
   author = authors[idx]
   file = URI.open(author)
@@ -36,6 +36,7 @@ puts "Seeding starting..."
 end
 puts "#{Author.count} authors created"
 
+puts "Creating books..."
 10.times do |num|
   file = URI.open('https://picsum.photos/300/300')
 
@@ -44,16 +45,17 @@ puts "#{Author.count} authors created"
     published_year: rand(1900..2020),
     genre: Faker::Book.genre,
     price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
-    description: Faker::Quote.matz,
+    description: [Faker::Quote.matz, Faker::Quote.most_interesting_man_in_the_world ].sample,
     author_id: Author.all.sample.id
     )
   book.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   book.save!
 end
-
 puts "#{Book.count} Users created"
 
-3.times {
+
+puts "Creating users..."
+4.times {
   User.create!(
     email: Faker::Internet.email,
     password: 12345678
@@ -61,7 +63,8 @@ puts "#{Book.count} Users created"
 }
 puts "#{User.count} Users created"
 
-5.times {
+puts "Creating orders..."
+10.times {
   Order.create!(
     start_date: Faker::Date.backward(days: 14),
     end_date: Faker::Date.forward(days: 14),
@@ -71,24 +74,18 @@ puts "#{User.count} Users created"
 }
 puts "#{Order.count} Orders created"
 
-5.times {
+puts "Creating reviews..."
+10.times {
   order = Order.all.sample
   user_id = order["user_id"].to_i
   order_id = order["id"].to_i
   Review.create!(
     rating: rand(1..5),
-    content: Faker::Quote.yoda,
+    content: [Faker::Quote.yoda, Faker::TvShows::TheITCrowd.quote, Faker::Movies::BackToTheFuture.quote].sample,
     order_id: order_id,
     user_id: user_id
     )
 }
 puts "#{Review.count} Reviews created"
-
-puts Author.count
-puts Book.count
-puts User.count
-puts Order.count
-puts Review.count
-
 
 puts "Seeding complete"
