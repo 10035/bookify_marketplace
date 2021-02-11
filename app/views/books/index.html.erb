@@ -6,6 +6,7 @@
           <%book.photos.each do |photo|  %>
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fit %>
         <% end %>
+
         <div class="card-body">
           <h3><%=link_to book.title.upcase, book_path(book) %></h3>
           <p class="card-text"><%= book.description %></p>

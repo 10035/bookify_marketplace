@@ -4,4 +4,5 @@ class Author < ApplicationRecord
 
   # TBC IF MODULE REQUIRED HERE
   include PgSearch::Model   
+  multisearchable against: :book
 end
