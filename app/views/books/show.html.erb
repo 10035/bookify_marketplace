@@ -10,7 +10,8 @@
     <p><%= @book.description %></p>
     <p><%= @book.author.first_name%> <%=@book.author.last_name%></p>
     <p><%= link_to "Author details", author_book_path%></p>
-    <%= link_to "Back", books_path%>
+    <p><%= link_to "Back", books_path%></p>
+    <p><%= link_to "Delete book", book_path(@book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></p>
   </div>
 </div>
 
@@ -19,10 +20,10 @@
     <h2>Rent book</h2>
     <%= simple_form_for [@book, @order] do |f| %>
     <label>Check out</label>
-    <%= f.input :start_date %>
+    <%= f.text_field :start_date, data: { behavior: "flatpickr"} %>
     <label>Return</label>
-    <%= f.input :end_date %>
-    <%= f.submit "Rent" %>
+    <%= f.text_field :end_date, data: { behavior: "flatpickr"} %>
+    <%= f.submit "Rent", class: "btn btn-info mt-3" %>
     <% end %>
   </div>
 </div>
@@ -48,8 +49,8 @@
 
 <%# <div class="container">
   <div class="jumbotron vertical-center">
-    <h2>Book Reviews <strong><%#=    
-    @book.title.upcase  %> 
+    <h2>Book Reviews <strong><%#=
+    @book.title.upcase  %>
     <%# </strong></h2> %>
     <%# @orders.each do |order| %>
         <%# <p>= order.start_date = order.end_date</p>

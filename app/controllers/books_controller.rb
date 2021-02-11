@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_book, only: [:show, :author, :order]
+  before_action :set_book, only: [:show, :author, :order, :destroy]
 
   def index
     # @books = Book.all
@@ -37,6 +37,13 @@ class BooksController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    # deletes a book
+    @book.destroy
+
+    redirect_to books_path
   end
 
   def author
