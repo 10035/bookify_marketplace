@@ -46,6 +46,8 @@ document.addEventListener('turbolinks:load', () => {
   endDateInput.disabled = true
 
   flatpickr(startDateInput, {
+    altInput: true,
+    altFormat: "F j, Y",
     minDate: "today",
     disable: unavailableDates,
     dateFormat: "Y-m-d",
@@ -58,6 +60,8 @@ document.addEventListener('turbolinks:load', () => {
       endDateInput.disabled = false
     }
   flatpickr(endDateInput, {
+    altInput: true,
+    altFormat: "F j, Y",
     minDate: e.target.value,
     disable: unavailableDates,
     dateFormat: "Y-m-d"
