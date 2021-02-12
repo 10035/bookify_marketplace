@@ -1,4 +1,3 @@
-
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -12,4 +11,6 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import 'flatpickr/dist/flatpickr';
+@import "flatpickr/dist/themes/airbnb";
+// @import 'flatpickr/dist/flatpickr';
+

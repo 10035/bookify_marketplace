@@ -2,15 +2,24 @@ class BooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :set_book, only: [:show, :author, :order, :destroy]
 
+
+  # THIS CODE ALLOWS USER TO SEARCH BOOKS BY AUTHOR FIRST AND LAST NAME, AND BOOK TITLE AND DESCRIPTION
   def index
-    # @books = Book.all
-    if params[:query].present? 
-      @books = Book.where("title ILIKE :query OR description ILIKE :query",  query: "%#{params[:query]}")
-    else
+    if params[:query].present?
+      sql_query = " \
+              books.title ILIKE :query \
+              OR books.description ILIKE :query \
+              OR authors.last_name ILIKE :query \
+              OR authors.first_name ILIKE :query \
+              "
+      @books = Book.joins(:author).where(sql_query, query: "%#{params[:query]}%")
+    else 
       @books = Book.all
     end
-    # @books = policy_scope(Book).orders(created_at: :desc)
   end
+
+  #   # @books = policy_scope(Book).orders(created_at: :desc)
+  # end
 
   def show
     # Could be   used as a way to display if book has been rented?

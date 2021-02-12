@@ -12,8 +12,8 @@
         <div class="col-lg-12" id="newcard">
           <%  @book = Book.find {|book| book.id == order.book_id} %>
           <h2><%= @book.title %></h2>
-          <h2><%= order.start_date %></h2>
-          <h2><%= order.end_date %></h2>
+          <h2><%= order.start_date.strftime("%B %d, %Y") %></h2>
+          <h2><%= order.end_date.strftime("%B %d, %Y") %></h2>
           <h2><%= order.order_total %></h2>
           <h2><%= order.quantity %></h2>
           <h2><%= order.status %></h2>
