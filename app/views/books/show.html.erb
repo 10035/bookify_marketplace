@@ -15,22 +15,23 @@
   </div>
 </div>
 
+
 <div class="container">
   <div class="jumbotron vertical-center">
     <h2>Rent book</h2>
-    <%= simple_form_for [@book, @order] do |f| %>
-    <label>Check out</label>
-    <%= f.text_field :start_date, data: { behavior: "flatpickr"} %>
-    <label>Return</label>
-    <%= f.text_field :end_date, data: { behavior: "flatpickr"} %>
-    <%= f.submit "Rent", class: "btn btn-info mt-3" %>
-    <% end %>
+    <div id='flat-booking-dates' data-unavailable="<%= @book.unavailable_dates.to_json %>">
+      <%= simple_form_for [@book, @order] do |f| %>
+        <label>Check out</label>
+        <%= f.text_field :start_date, data: { behavior: "flatpickr"}, id: "booking_start_date" %>
+        <label>Return</label>
+        <%= f.text_field :end_date, data: { behavior: "flatpickr"}, id: "booking_end_date" %>
+        <%= f.submit "Rent", class: "btn btn-info mt-3" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
-
 <%# BOOK REVIEWS %>
-
 <div class="container">
   <div class="jumbotron vertical-center">
     <h2>Book Reviews</h2>
@@ -39,21 +40,3 @@
     <% end %>
   </div>
 </div>
-
-
-
-
-
-
-
-
-<%# <div class="container">
-  <div class="jumbotron vertical-center">
-    <h2>Book Reviews <strong><%#=
-    @book.title.upcase  %>
-    <%# </strong></h2> %>
-    <%# @orders.each do |order| %>
-        <%# <p>= order.start_date = order.end_date</p>
-    <%# end %>
-  <%# </div>
-</div> %>
