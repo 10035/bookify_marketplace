@@ -13,7 +13,7 @@ class BooksController < ApplicationController
               OR authors.first_name ILIKE :query \
               "
       @books = Book.joins(:author).where(sql_query, query: "%#{params[:query]}%")
-    else 
+    else
       @books = Book.all
     end
   end

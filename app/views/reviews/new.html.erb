@@ -1,9 +1,10 @@
+
   <div class="container">
     <div class="row justify-content-center jumbotron vertical-center jumbotron-fluid">
       <div class="col-12 col-md-8 col-sm-4">
       <div class="form-inputs">
           <%= simple_form_for [@order, @review] do |f| %>
-            <%= f.input :rating %>
+            <%= f.input :rating, as: :radio_buttons, collection: 1..5, selected: 5%>
             <%= f.input :content %>
             <%= f.button :submit, class:"btns" %>
           <% end %>

@@ -14,6 +14,8 @@ authors = ["https://images.unsplash.com/photo-1594616838951-c155f8d978a0?ixid=MX
 
 book_covers = ["https://i1.wp.com/www.thebooksatchel.com/wp-content/uploads/2020/04/best-book-covers-from-India-2019.jpg?fit=1200%2C1500&ssl=1","https://e3t6q7b4.stackpathcdn.com/wp-content/uploads/2018/09/five-feet-apart-9781534437333_hr-679x1024.jpg","https://www.skipprichard.com/wp-content/uploads/2018/12/9781501180989.jpg","https://www.writersdigest.com/.image/t_share/MTcxMDY1ODEzMzk4NjYwMzU3/image-placeholder-title.jpg","https://i.pinimg.com/736x/a0/e6/26/a0e626af3883e109da440ec021080f99.jpg","https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc_screen.jpg?ts=1588152105","https://static01.nyt.com/images/2014/02/05/books/05before-and-after-slide-T6H2/05before-and-after-slide-T6H2-superJumbo.jpg?quality=75&auto=webp&disable=upscale","https://www.quirkbooks.com/sites/default/files/styles/blog_detail_featured_image/public/LastPoliceman_pikachu3.jpg?itok=_TfyN6Q5","https://images.squarespace-cdn.com/content/v1/5ae2fce87e3c3ae275ea2c9f/1526464175408-W92Q4MSAM40I8YF4HM64/ke17ZwdGBToddI8pDm48kG42nK5MxReh9N1Tgs_dc9t7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UXysNIcM8ERoy824r28kfN5DdNsbvYnFI46u1WARIoKesh_vZu_IHrh0xbom9DKbTA/tess-cover.jpg?format=1500w","https://lithub.com/wp-content/uploads/2019/01/81SBy9jbbHL.jpg"]
 
+avatars = ["https://images.unsplash.com/photo-1520223297779-95bbd1ea79b7?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzJ8fHByb2ZpbGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=60", "https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjR8fHByb2ZpbGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=60", "https://images.unsplash.com/photo-1441441247730-d09529166668?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjB8fHByb2ZpbGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=60", "https://images.unsplash.com/photo-1457449940276-e8deed18bfff?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=60"]
+
 puts "Deleting seed"
 
 Review.delete_all
@@ -57,19 +59,23 @@ puts "#{Book.count} Users created"
 
 
 puts "Creating users..."
-4.times {
-  User.create!(
+4.times do |idx|
+  avatar = avatars[idx]
+  file = URI.open(avatar)
+  user = User.new(
     email: Faker::Internet.email,
     password: 12345678
     )
-}
+  user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  user.save!
+end
 puts "#{User.count} Users created"
 
 puts "Creating orders..."
-20.times {
-  Order.create!(
-    start_date: Faker::Date.backward(days: 60),
-    end_date: Faker::Date.forward(days: 60),
+60.times {
+  Order.create(
+    start_date: Date.today + rand(1..14),
+    end_date: Date.today + rand(14..30),
     book_id: Book.all.sample.id,
     user_id: User.all.sample.id
     )
