@@ -1,11 +1,18 @@
 .footer-links a {
   color: #FCA311;
 }
+
+.footer p{
+  color: rgba(0,0,0,0.3);
+}
+
+
 .navbar-lewagon {
   justify-content: space-between;
   background:#f4e4cb;
   border-bottom:1px solid rgba(109, 109, 109, 0.1);
   border-bottom-style:inset;
+  margin-bottom: 0px;
 }
 
 // .navbar-lewagon li{
@@ -60,6 +67,6 @@
 }
 
 .navbar-light .navbar-toggler {
-  border-color:#E5E5E5;
+  border-color:#f4e4cb;
 }
 

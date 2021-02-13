@@ -22,7 +22,7 @@ class BooksController < ApplicationController
   # end
 
   def show
-    # Could be used as a way to display if book has been rented?
+    # Could be   used as a way to display if book has been rented?
     # /books/:id
     # grab orders showing a user's order history for a book on book show page
     @orders = @book.orders
