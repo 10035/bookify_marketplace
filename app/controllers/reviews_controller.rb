@@ -19,8 +19,9 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def show
-    @review = Review.all
+  def index
+    @reviews = Review.all
+    @user_reviews = current_user.reviews
   end
 
   def destroy
