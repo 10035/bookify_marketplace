@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   def index
     #  /orders
     @orders = Order.all
+    @user_orders = current_user.orders
   end
 
   def show
