@@ -5,11 +5,11 @@
 }
 
 
-.card-body{
-  // border-style: solid;
-  // border-radius: 3px;
-  // border-color: red;
-}
+// .card-body{
+//   // border-style: solid;
+//   // border-radius: 3px;
+//   // border-color: red;
+// }
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
@@ -55,3 +55,12 @@
   padding: 15px;
 }
 
+
+#newcard_order{
+  background-color: white;
+  border-radius: 3px;
+  border: solid 0.05px;
+  border-color: rgba(0, 0, 0, .1);
+  padding: 40px;
+  margin-bottom: 20px;
+}
