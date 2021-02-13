@@ -72,10 +72,10 @@ end
 puts "#{User.count} Users created"
 
 puts "Creating orders..."
-20.times {
-  Order.create!(
-    start_date: Faker::Date.backward(days: 60),
-    end_date: Faker::Date.forward(days: 60),
+60.times {
+  Order.create(
+    start_date: Date.today + rand(1..14),
+    end_date: Date.today + rand(14..30),
     book_id: Book.all.sample.id,
     user_id: User.all.sample.id
     )

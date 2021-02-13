@@ -10,8 +10,8 @@ class Book < ApplicationRecord
 
   # THIS MODULE ENABLES PG_SEARCH GEM TO DO ITS WORK TO SEARCH THROUGH ASSOCIATION
 
-  def unavailable_dates
-    orders.pluck(:start_date, :end_date).map do |range|
+  def unavailable_dates(order = nil)
+    orders.where.not(id: order&.id).pluck(:start_date, :end_date).map do |range|
       { from: range[0], to: range[1] }
     end
   end
