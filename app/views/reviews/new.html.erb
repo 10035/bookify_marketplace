@@ -7,16 +7,21 @@
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fit %>
         <% end %>
       </div>
+          </div>
+  </div>
+</div
 
       <br>
 
       <div class="container">
+       <div class="row justify-content-center jumbotron vertical-center jumbotron-fluid">
+          <div class="col-12 col-md-8 col-sm-4">
         <%= simple_form_for [@order, @review] do |f| %>
           <%= f.input :rating, as: :radio_buttons, collection: 1..5, selected: 5 %>
           <%= f.input :content %>
-          <%= f.submit "Add review", class: "btn btn-warning col-12" %>
+          <%= f.button :submit, class: "btns" %>
         <% end %>
+        </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+>
