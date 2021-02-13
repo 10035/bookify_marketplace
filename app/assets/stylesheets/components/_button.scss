@@ -30,8 +30,14 @@
 background-color: #FCA311;
   border-radius: 20px;
   margin-top: 4px;
-  width: 150px;
+  width: 300px;
+  padding: 10px;
+  display: inline-block;
+  line-height: 20px;
+  text-align: center;
 }
+
+
 
 // a {
 //   color: #91091e;
@@ -40,3 +46,12 @@ background-color: #FCA311;
 //     text-decoration: none;
 //   }
 // }
+
+a {
+  color: #14213D;
+  font-weight: 700;
+  &:hover {
+    color: #91091e;
+  }
+}
+
