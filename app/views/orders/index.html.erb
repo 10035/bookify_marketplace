@@ -5,24 +5,29 @@
     </li>
   </ul>
 
-
-  <div class="container">
-    <h1 class="text-center">All Orders</h1>
+<div class="container">
+  <h1 class="text-center">My Orders</h1>
     <div class="row justify-content-center">
-      <% @orders.each do |order| %>
-        <div class="col-lg-8" id="newcard_order">
-          <%  @book = Book.find {|book| book.id == order.book_id} %>
-      <h1><%=link_to @book.title.upcase, book_path(order) %></h1>
-          <h3><%= order.start_date.strftime("%B %d, %Y") %></h3>
-          <h3><%= order.end_date.strftime("%B %d, %Y") %></h3>
-          <h3><%= order.order_total %></h3>
-          <h3><%= order.quantity %></h3>
-          <h3><%= order.status %></h3>
-          <p><%= link_to "ORDER DETAILS", order_path(order), class: "btns text-center" %></p>
-          <p><%= link_to "CANCEL ORDER", order_path(order), method: :delete,
-                    data: { confirm: "Are you sure?" }, class: "btns btn-danger" %></p>
+      <div class="row">
+      <% if @user_orders.empty? %>
+        <p>You have no orders</p>
+      <% else %>
+          <% @user_orders.each do |order| %>
+            <div class="col-lg-12" id="newcard">
+              <%  @book = Book.find {|book| book.id == order.book_id} %>
+              <h2><%= @book.title %></h2>
+              <h2><%= order.start_date.strftime("%B %d, %Y") %></h2>
+              <h2><%= order.end_date.strftime("%B %d, %Y") %></h2>
+              <h2><%= order.order_total %></h2>
+              <h2><%= order.quantity %></h2>
+              <h2><%= order.status %></h2>
+              <h2><%= link_to "Go to Order", order_path(order), class: "btn btn-primary" %></h2>
+              <p><%= link_to "Cancel order", order_path(order), method: :delete,
+                        data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></p>
+              <hr>
+            </div>
+          <% end %>
+      <% end %>
     </div>
-        <% end %>
   </div>
 </div>
-   
