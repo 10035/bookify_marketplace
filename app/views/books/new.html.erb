@@ -4,6 +4,7 @@
       <%= link_to "ALL BOOKS", books_path, class: "nav-link active"  %>
     </li>
   </ul>
+  </div>
 
   <div class="container">
     <div class="row  justify-content-center">
@@ -16,13 +17,12 @@
           <%= f.input :price %>
           <%= f.input :description %>
           <%= f.input :photos, as: :file, input_html: {multiple: true} %>
-          <%# <span class="input-group-addon"><i class="fas fa-plus-square"></i></span> %>
           <%= f.button :submit, class:"btns"%>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+
 
 
 
