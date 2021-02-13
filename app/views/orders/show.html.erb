@@ -17,14 +17,17 @@
   <hr>
 
   <div class="container">
-      <h3>Edit Order Dates</h3>
-    <%= simple_form_for @order do |f| %>
-      <label>Check out</label>
-      <%= f.text_field :start_date, data: { behavior: "flatpickr"} %>
-      <label>Return</label>
-      <%= f.text_field :end_date, data: { behavior: "flatpickr"} %>
-      <%= f.submit "Update order", class: "btn btn-secondary mt-3 col-4" %>
-      <% end %>
+    <div class="jumbotron vertical-center">
+      <h2>Rent book</h2>
+      <div id='flat-booking-dates' data-unavailable="<%= @book.unavailable_dates.to_json %>">
+        <%= simple_form_for @order do |f| %>
+          <label>Check out</label>
+          <%= f.text_field :start_date, data: { behavior: "flatpickr"}, id: "booking_start_date" %>
+          <label>Return</label>
+          <%= f.text_field :end_date, data: { behavior: "flatpickr"}, id: "booking_end_date" %>
+          <%= f.submit "Rent", class: "btn btn-info mt-3" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
 </div>
