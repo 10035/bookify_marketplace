@@ -20,13 +20,14 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.all   
+    @review = Review.all
   end
 
   def destroy
     @review = Review.find(params[:id])
+    @order = Order.find(@review.order_id)
     @review.destroy
-    redirect_to books_path
+    redirect_to book_path(@order.book)
   end
 
   private
