@@ -39,24 +39,6 @@ puts "Creating authors..."
 end
 puts "#{Author.count} authors created"
 
-puts "Creating books..."
-10.times do |idx|
-  book_cover = book_covers[idx]
-  file = URI.open(book_cover)
-
-  book = Book.new(
-    title: Faker::Book.title,
-    published_year: rand(1900..2020),
-    genre: Faker::Book.genre,
-    price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
-    description: Faker::Quote.matz,
-    author_id: Author.all.sample.id
-    )
-  book.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-  book.save!
-end
-puts "#{Book.count} Users created"
-
 
 puts "Creating users..."
 4.times do |idx|
@@ -70,6 +52,29 @@ puts "Creating users..."
   user.save!
 end
 puts "#{User.count} Users created"
+
+
+puts "Creating books..."
+10.times do |idx|
+  book_cover = book_covers[idx]
+  file = URI.open(book_cover)
+
+  book = Book.new(
+    title: Faker::Book.title,
+    published_year: rand(1900..2020),
+    genre: Faker::Book.genre,
+    price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
+    description: Faker::Quote.matz,
+    author_id: Author.all.sample.id,
+    user_id: User.all.sample
+    )
+  book.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  book.save!
+end
+puts "#{Book.count} Users created"
+
+
+
 
 puts "Creating orders..."
 60.times {
