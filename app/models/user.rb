@@ -9,4 +9,8 @@ class User < ApplicationRecord
   has_many :orders
   has_one_attached :photo
 
+  def owns?(item)
+    item.user==self
+  end
+
 end
