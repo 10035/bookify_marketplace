@@ -37,7 +37,17 @@
   <div class="jumbotron vertical-center">
     <h2>Book Reviews</h2>
     <p><% @book.reviews.each do |review| %></p>
-    <p><%= review.rating %> <%= review.content %> </p>
+
+      <% if User.find(review.user_id).photo.attached? %>
+        <span class="mr-4"><%= cl_image_tag User.find(review.user_id).photo.key, class: "avatar", crop: :fill %></span>
+      <% else %>
+        <span class="mr-4"><%= image_tag("https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8cm9ib3QlMjBmYWNlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" , :class => "avatar") %></span>
+      <% end %>
+
+      <span><%= "⭐️" * review.rating %></span>
+      <p class="mt-2"><strong><%= User.find(review.user_id).email.split("@")[0] %></strong></p>
+      <p class="mt-2"> <%= review.content %> </p>
+      <hr>
     <% end %>
   </div>
 </div>
