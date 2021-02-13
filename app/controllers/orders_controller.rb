@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
   def update
     @order.update(order_params)
 
-    redirect_to orders_path
+    redirect_to order_path(@order)
   end
 
   def destroy
