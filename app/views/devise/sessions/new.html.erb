@@ -1,8 +1,8 @@
 
-<div class="container">
+<div class="container" id="login-form">
   <div class="row  justify-content-center">
     <div class="col-12 col-md-6 col-sm-4">
-      <h2>Login using your Bookify account</h2>
+      <h3>Welcome to Bookify</h3>
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email,
@@ -19,6 +19,7 @@
     <%= f.button :submit, "Log in" %>
   </div>
 <% end %>
+<hr>
 <%= render "devise/shared/links" %>
 </div>
 </div>
