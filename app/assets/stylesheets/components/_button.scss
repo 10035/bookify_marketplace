@@ -1,6 +1,3 @@
-
-
-
 .form-control:focus {
   box-shadow: none;
 }
@@ -13,11 +10,15 @@
 }
 
 .form-actions {
-  background-color: #ffffff;
-  border-radius: 10px;
-  border-style: solid, 10px;
-  box-shadow: grey;
+  color: white;
+  background-color: orange;
   text-align: center;
+  :hover {
+    width: 180px;
+    background-color: white;
+    color: orange;
+    transition-delay: 100ms;
+  }
 }
 
 /*
@@ -35,7 +36,7 @@
 }
 
 .btns{
-background-color: #FCA311;
+  background-color: #ffffff;
   border-radius: 20px;
   margin-top: 4px;
   width: 300px;
